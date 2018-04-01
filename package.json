@@ -1,0 +1,28 @@
+{
+  "name": "crawler-tinkering",
+  "version": "1.0.0",
+  "description": "Toy project to crawl a page to help out in another project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && node_modules/.bin/tslint --project ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angry-werner/crawler-tinkering.git"
+  },
+  "author": "Werner Koch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/angry-werner/crawler-tinkering/issues"
+  },
+  "homepage": "https://github.com/angry-werner/crawler-tinkering#readme",
+  "dependencies": {
+    "protractor": "^5.3.0"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.2",
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.1"
+  }
+}
