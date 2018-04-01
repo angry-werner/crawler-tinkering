@@ -10,11 +10,11 @@ export class Index {
         webdriver
             .remote({
                 desiredCapabilities: {
-                    browserName: 'firefox'
+                    browserName: 'chrome'
                 }
             })
             .init()
-            .url('http://www.google.com')
+            .url('https://www.blickamabend.ch')
             .getTitle()
             .then((title) => {
                 console.log('Title was: ' + title);
