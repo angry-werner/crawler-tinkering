@@ -3,3 +3,4 @@ export class Index {
         console.log('Hello world!');
     }
 }
+Index.main();
