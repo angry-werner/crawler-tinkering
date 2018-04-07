@@ -1,5 +1,8 @@
 import * as moment from 'moment';
 import webdriver = require('webdriverio');
+import {StringCleaning} from "./StringCleaning";
+import Element = WebdriverIO.Element;
+import RawResult = WebdriverIO.RawResult;
 
 export class Index {
     public static results: any[] = [];
@@ -17,7 +20,7 @@ export class Index {
         console.log('Start crawling!');
         try {
             const date = moment();
-            date.subtract(64, 'd');
+            date.subtract(61, 'd');
             for (let i: number = 1; i <= 1; i++) {
                 const queryDay = Index.format(date.date().toString()) + Index.format((date.month() + 1).toString());
                 console.log('Query: ' + queryDay);
@@ -69,7 +72,15 @@ export class Index {
             }
         }).init().url(entry.href);
         const title: string = await session.element('#page > .article > .articleHeader > h1').getText();
-        entry.title = title;
+        const infos = {
+            title: new StringCleaning().clean(title)
+        };
+        entry.infos = infos;
+        const infoElements: RawResult<Element[]> =
+            await session.elements('#page > .article. > .article-entry > .article_text > .vspace > p');
+        for (const element of infoElements.value) {
+            console.log();
+        }
         session.close();
         return entry;
     }

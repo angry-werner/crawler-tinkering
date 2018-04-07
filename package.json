@@ -4,7 +4,7 @@
   "description": "Toy project to crawl a page to help out in another project.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jasmine-ts \"spec/**/*.spec.ts\"",
     "build": "rimraf dist && tsc && node_modules/.bin/tslint --project .",
     "crawl": "node dist/Index.js"
   },
@@ -24,6 +24,9 @@
     "webdriverio": "^4.12.0"
   },
   "devDependencies": {
+    "@types/jasmine": "^2.8.6",
+    "jasmine": "^3.1.0",
+    "jasmine-ts": "^0.2.1",
     "rimraf": "^2.6.2",
     "selenium-standalone": "^6.13.0",
     "tslint": "^5.9.1",
