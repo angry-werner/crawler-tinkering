@@ -17,7 +17,7 @@ export class HandleEntry {
             }
         }).init().url(entry.href);
         const title: string = await session.element('#page > .article > .articleHeader > h1').getText();
-        entry.addInfo(new Info('title', this.stringCleaning.clean(title)));
+        entry.addInfo(new Info('Titel', this.stringCleaning.clean(title)));
         const infoElements: RawResult<Element[]> =
             await session.elements('#page > .article > .article-entry > .article_text > .vspace > p');
         for (const element of infoElements.value) {
