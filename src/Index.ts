@@ -20,14 +20,14 @@ export class Index {
         console.log('Start crawling!');
         try {
             const date = moment();
-            date.subtract(61, 'd');
+            date.subtract(75, 'd');
             for (let i: number = 1; i <= 1; i++) {
                 const queryDay = Index.format(date.date().toString()) + Index.format((date.month() + 1).toString());
                 console.log('Query: ' + queryDay);
                 const result: any[] = await Index.handleDay(queryDay);
                 for (const entry of result) {
-                    const advertisement: any = await Index.handleEntry(entry);
-                    console.log(JSON.stringify(entry));
+                    // const advertisement: any = await Index.handleEntry(entry);
+                    // console.log(JSON.stringify(entry));
                 }
                 Array.prototype.push.apply(Index.results, result);
                 date.subtract(1, 'd');
