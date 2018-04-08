@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jasmine-ts \"spec/**/*.spec.ts\"",
-    "build": "rimraf dist && tsc && node_modules/.bin/tslint --project .",
+    "build": "rimraf dist && tsc && node_modules/.bin/tslint --project . && npm run test",
     "crawl": "node dist/Index.js"
   },
   "repository": {
