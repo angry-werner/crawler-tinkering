@@ -4,8 +4,17 @@ import {StringCleaning} from './StringCleaning';
 import Element = WebdriverIO.Element;
 import RawResult = WebdriverIO.RawResult;
 
+import {Entry} from './Entry';
+import {HandleDay} from './HandleDay';
+import {SimpleHandleDay} from "./SimpleHandleDay";
+
 export class CrawlerTinkering {
-    private results: any[] = [];
+    private results: Entry[] = [];
+    private readonly handleDay: HandleDay;
+
+    public constructor(handleDay?: HandleDay) {
+         this.handleDay = (handleDay === undefined) ? new SimpleHandleDay() : handleDay;
+    }
 
     public async doCrawl(startDate: Moment, daysBack: number) {
         console.log('Start crawling!');
@@ -14,7 +23,7 @@ export class CrawlerTinkering {
                 const queryDay = 'https://www.blickamabend.ch/suche/?q=single tages '
                     + this.format(startDate.date().toString()) + this.format((startDate.month() + 1).toString());
                 console.log('Query: ' + queryDay);
-                const result: any[] = await this.handleDay(queryDay);
+                const result: any[] = await this.handleDay.handleDay(queryDay);
                 for (const entry of result) {
                     // handle entry
                 }
@@ -27,7 +36,11 @@ export class CrawlerTinkering {
         }
     }
 
-    private async handleDay(url: string): Promise<any> {
+    public getResults(): Entry[] {
+        return this.results;
+    }
+
+    private async _handleDay(url: string): Promise<any> {
         const results: any[] = [];
         const session: WebdriverIO.Client<any> = webdriver.remote({
             desiredCapabilities: {
