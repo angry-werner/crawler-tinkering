@@ -1,54 +1,39 @@
-import * as moment from 'moment';
+import {Moment} from 'moment';
 import webdriver = require('webdriverio');
-import {StringCleaning} from "./StringCleaning";
+import {StringCleaning} from './StringCleaning';
 import Element = WebdriverIO.Element;
 import RawResult = WebdriverIO.RawResult;
 
-export class Index {
-    public static results: any[] = [];
-    public static main() {
-        Index.doCrawl().then((result) => {
-            if (result !== undefined) {
-                console.log('Result from top promise: ' + result);
-            }
-        }).catch((error) => {
-            console.log('Error from top promise: ' + error);
-        });
-    }
+export class CrawlerTinkering {
+    private results: any[] = [];
 
-    private static async doCrawl() {
+    public async doCrawl(startDate: Moment, daysBack: number) {
         console.log('Start crawling!');
         try {
-            const date = moment();
-            date.subtract(75, 'd');
-            for (let i: number = 1; i <= 1; i++) {
-                const queryDay = Index.format(date.date().toString()) + Index.format((date.month() + 1).toString());
+            for (let i: number = 1; i <= daysBack; i++) {
+                const queryDay = 'https://www.blickamabend.ch/suche/?q=single tages '
+                    + this.format(startDate.date().toString()) + this.format((startDate.month() + 1).toString());
                 console.log('Query: ' + queryDay);
-                const result: any[] = await Index.handleDay(queryDay);
+                const result: any[] = await this.handleDay(queryDay);
                 for (const entry of result) {
-                    // const advertisement: any = await Index.handleEntry(entry);
-                    // console.log(JSON.stringify(entry));
+                    // handle entry
                 }
-                Array.prototype.push.apply(Index.results, result);
-                date.subtract(1, 'd');
+                Array.prototype.push.apply(this.results, result);
+                startDate.subtract(1, 'd');
             }
         } finally {
             //
-            console.log('End crawling! Found ' + Index.results.length + ' singles.');
+            console.log('End crawling! Found ' + this.results.length + ' singles.');
         }
     }
 
-    private static format(dayOrMonth: string): string {
-        return dayOrMonth.length === 1 ? '0' + dayOrMonth : dayOrMonth;
-    }
-
-    private static async handleDay(date: string): Promise<any> {
+    private async handleDay(url: string): Promise<any> {
         const results: any[] = [];
         const session: WebdriverIO.Client<any> = webdriver.remote({
             desiredCapabilities: {
                 browserName: 'chrome'
             }
-        }).init().url('https://www.blickamabend.ch/suche/?q=single tages ' + date);
+        }).init().url(url);
         const elements: any = await session.elements('div.list > div.item');
         console.log('Elemente: ' + elements.value.length);
         for (const element of elements.value) {
@@ -65,7 +50,7 @@ export class Index {
         return results;
     }
 
-    private static async handleEntry(entry: any): Promise<any> {
+    private async handleEntry(entry: any): Promise<any> {
         const session: WebdriverIO.Client<any> = webdriver.remote({
             desiredCapabilities: {
                 browserName: 'chrome'
@@ -84,6 +69,8 @@ export class Index {
         session.close();
         return entry;
     }
-}
 
-Index.main();
+    private format(dayOrMonth: string): string {
+        return dayOrMonth.length === 1 ? '0' + dayOrMonth : dayOrMonth;
+    }
+}

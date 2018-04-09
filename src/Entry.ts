@@ -1,4 +1,4 @@
-import {Info} from "./Info";
+import {Info} from './Info';
 
 export class Entry {
     private infos: Map<string, string> = new Map<string, string>();
