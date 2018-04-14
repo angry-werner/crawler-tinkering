@@ -8,10 +8,10 @@ import {SessionFactory} from './SessionFactory';
 import {StringCleaning} from './StringCleaning';
 
 export class SimpleHandleEntry implements HandleEntry {
-    private static TITLE_SELECTOR: string = '#page > .article > .articleHeader > h1';
-    private static ENTRY_SELECTOR: string = '#page > .article > .article-entry > .article_text > .vspace > p';
-    private stringCleaning: StringCleaning = new StringCleaning();
-    private sessionFactory: SessionFactory = new SessionFactory();
+    private static readonly TITLE_SELECTOR: string = '#page > .article > .articleHeader > h1';
+    private static readonly ENTRY_SELECTOR: string = '#page > .article > .article-entry > .article_text > .vspace > p';
+    private readonly stringCleaning: StringCleaning = new StringCleaning();
+    private readonly sessionFactory: SessionFactory = new SessionFactory();
 
     public async handleEntry(entry: Entry): Promise<Entry> {
         const session: Client<RawResult<null>> & RawResult<null> = this.sessionFactory.createSession(entry.href);

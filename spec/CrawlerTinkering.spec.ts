@@ -6,7 +6,7 @@ import {Entry} from "../src/Entry";
 
 class DummyHandleDay implements HandleDay {
     public async handleDay(url: string): Promise<Entry[]> {
-        return [new Entry('foo', 'bar')];
+        return [new Entry('13.02.2017', 'file:///home/kow/git/crawler-tinkering/spec/resources/PartnersucheDetail.html')];
     }
 }
 
@@ -15,5 +15,14 @@ describe('Handle a full crawl', () => {
         const crawlerTinkering: CrawlerTinkering = new CrawlerTinkering(new DummyHandleDay());
         await crawlerTinkering.doCrawl(moment(), 1);
         expect(crawlerTinkering.getResults().length).toBe(1);
+        expect(crawlerTinkering.getResults()[0].getInfos().size).toBe(15);
+
+    });
+    it('Handle a happy case for two days', async () => {
+        const crawlerTinkering: CrawlerTinkering = new CrawlerTinkering(new DummyHandleDay());
+        await crawlerTinkering.doCrawl(moment(), 2);
+        expect(crawlerTinkering.getResults().length).toBe(2);
+        expect(crawlerTinkering.getResults()[0].getInfos().size).toBe(15);
+        expect(crawlerTinkering.getResults()[1].getInfos().size).toBe(15);
     });
 });

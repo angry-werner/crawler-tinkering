@@ -1,7 +1,7 @@
 import {Info} from './Info';
 
 export class Entry {
-    private infos: Map<string, string> = new Map<string, string>();
+    private readonly infos: Map<string, string> = new Map<string, string>();
 
     public constructor(readonly date: string, readonly href: string) {}
 

@@ -6,14 +6,19 @@ import RawResult = WebdriverIO.RawResult;
 
 import {Entry} from './Entry';
 import {HandleDay} from './HandleDay';
+import {HandleEntry} from "./HandleEntry";
 import {SimpleHandleDay} from "./SimpleHandleDay";
+import {SimpleHandleEntry} from "./SimpleHandleEntry";
 
 export class CrawlerTinkering {
-    private results: Entry[] = [];
+    private readonly results: Entry[] = [];
     private readonly handleDay: HandleDay;
+    private readonly handleEntry: HandleEntry;
 
-    public constructor(handleDay?: HandleDay) {
-         this.handleDay = (handleDay === undefined) ? new SimpleHandleDay() : handleDay;
+    public constructor(handleDay: HandleDay = new SimpleHandleDay(),
+                       handleEntry: HandleEntry = new SimpleHandleEntry()) {
+         this.handleDay = handleDay;
+         this.handleEntry = handleEntry;
     }
 
     public async doCrawl(startDate: Moment, daysBack: number) {
@@ -25,62 +30,18 @@ export class CrawlerTinkering {
                 console.log('Query: ' + queryDay);
                 const result: any[] = await this.handleDay.handleDay(queryDay);
                 for (const entry of result) {
-                    // handle entry
+                    await this.handleEntry.handleEntry(entry);
                 }
                 Array.prototype.push.apply(this.results, result);
                 startDate.subtract(1, 'd');
             }
         } finally {
-            //
             console.log('End crawling! Found ' + this.results.length + ' singles.');
         }
     }
 
     public getResults(): Entry[] {
         return this.results;
-    }
-
-    private async _handleDay(url: string): Promise<any> {
-        const results: any[] = [];
-        const session: WebdriverIO.Client<any> = webdriver.remote({
-            desiredCapabilities: {
-                browserName: 'chrome'
-            }
-        }).init().url(url);
-        const elements: any = await session.elements('div.list > div.item');
-        console.log('Elemente: ' + elements.value.length);
-        for (const element of elements.value) {
-            const dateString: string = await session.elementIdElement(element.ELEMENT, 'span.time').getText();
-            const linkElement: any = await session.elementIdElement(element.ELEMENT, 'a.news-links');
-            const href = await session.elementIdAttribute(linkElement.value.ELEMENT, 'href');
-            const entry: any = {
-                date: dateString,
-                href: href.value
-            };
-            results.push(entry);
-        }
-        session.close();
-        return results;
-    }
-
-    private async handleEntry(entry: any): Promise<any> {
-        const session: WebdriverIO.Client<any> = webdriver.remote({
-            desiredCapabilities: {
-                browserName: 'chrome'
-            }
-        }).init().url(entry.href);
-        const title: string = await session.element('#page > .article > .articleHeader > h1').getText();
-        const infos = {
-            title: new StringCleaning().clean(title)
-        };
-        entry.infos = infos;
-        const infoElements: RawResult<Element[]> =
-            await session.elements('#page > .article. > .article-entry > .article_text > .vspace > p');
-        for (const element of infoElements.value) {
-            console.log();
-        }
-        session.close();
-        return entry;
     }
 
     private format(dayOrMonth: string): string {

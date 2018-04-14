@@ -6,8 +6,8 @@ import {HandleDay} from './HandleDay';
 import {SessionFactory} from './SessionFactory';
 
 export class SimpleHandleDay implements HandleDay {
-    private static HIT_LIST = 'div.list > div.item';
-    private sessionFactory: SessionFactory = new SessionFactory();
+    private static readonly HIT_LIST = 'div.list > div.item';
+    private readonly sessionFactory: SessionFactory = new SessionFactory();
 
     public async handleDay(url: string): Promise<Entry[]> {
         const results: Entry[] = [];

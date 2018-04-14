@@ -4,8 +4,9 @@ import {CrawlerTinkering} from './CrawlerTinkering';
 
 export class Crawler {
 
-    public static main() {
-        const date: Moment = moment().subtract(76, 'd');
+    public static main(daysFromNow: number) {
+        const date: Moment = moment();
+        date.subtract(daysFromNow, 'd');
 
         new CrawlerTinkering().doCrawl(date, 1).then((result) => {
             if (result !== undefined) {
@@ -17,4 +18,4 @@ export class Crawler {
     }
 }
 
-Crawler.main();
+Crawler.main(0);
