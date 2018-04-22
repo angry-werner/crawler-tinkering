@@ -7,6 +7,6 @@ describe('Handle a single entry', () => {
         const entry: Entry = new Entry('13.02.2017', 'file:///home/kow/git/crawler-tinkering/spec/resources/PartnersucheDetail.html');
         const result: Entry = await new SimpleHandleEntry().handleEntry(entry);
         expect(result.getInfos().get('Titel')).toEqual('Tamara sucht einen Mann, der mich überrascht und berührt');
-        expect(result.getInfos().size).toBe(15);
+        expect(result.getInfos().size).toBe(16);
     });
 });

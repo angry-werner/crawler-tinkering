@@ -38,7 +38,7 @@ describe('Check if we can serialise stuff to the file system.', () => {
         expect(readEntries.length).toBe(2);
     });
 
-    fit('Write one after the other', () => {
+    it('Write one after the other', () => {
         // Arrange
         const entry1: Entry = new Entry('01.01.2018', 'http://www.example1.org');
         const entry2: Entry = new Entry('02.02.2018', 'http://www.example2.org');

@@ -25,14 +25,14 @@ describe('Handle a full crawl', () => {
         const crawlerTinkering: CrawlerTinkering = new CrawlerTinkering(new DummyHandleDay());
         await crawlerTinkering.doCrawl(moment(), 1);
         expect(crawlerTinkering.getResults().length).toBe(1);
-        expect(crawlerTinkering.getResults()[0].getInfos().size).toBe(15);
+        expect(crawlerTinkering.getResults()[0].getInfos().size).toBe(16);
 
     });
     it('Handle a happy case for two days', async () => {
         const crawlerTinkering: CrawlerTinkering = new CrawlerTinkering(new DummyHandleDay());
         await crawlerTinkering.doCrawl(moment(), 2);
         expect(crawlerTinkering.getResults().length).toBe(2);
-        expect(crawlerTinkering.getResults()[0].getInfos().size).toBe(15);
-        expect(crawlerTinkering.getResults()[1].getInfos().size).toBe(15);
+        expect(crawlerTinkering.getResults()[0].getInfos().size).toBe(16);
+        expect(crawlerTinkering.getResults()[1].getInfos().size).toBe(16);
     });
 });
