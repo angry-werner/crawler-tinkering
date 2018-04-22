@@ -1,4 +1,5 @@
 import {CrawlerTinkering} from "../src/CrawlerTinkering";
+import * as Fs from "fs";
 import * as moment from "moment";
 import {Moment} from "moment";
 import {HandleDay} from "../src/HandleDay";
@@ -9,6 +10,15 @@ class DummyHandleDay implements HandleDay {
         return [new Entry('13.02.2017', 'file:///home/kow/git/crawler-tinkering/spec/resources/PartnersucheDetail.html')];
     }
 }
+
+beforeEach(() => {
+    try {
+        Fs.unlinkSync(CrawlerTinkering.FILE_NAME);
+    } catch (error) {
+        console.log('Trouble deleting file: ' + JSON.stringify(error));
+    }
+
+});
 
 describe('Handle a full crawl', () => {
     it('Handle a happy case for one day', async () => {

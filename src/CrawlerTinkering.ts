@@ -1,9 +1,6 @@
 import {Moment} from 'moment';
-import webdriver = require('webdriverio');
-import {StringCleaning} from './StringCleaning';
-import Element = WebdriverIO.Element;
-import RawResult = WebdriverIO.RawResult;
 
+import {DumpToFile} from "./DumpToFile";
 import {Entry} from './Entry';
 import {HandleDay} from './HandleDay';
 import {HandleEntry} from "./HandleEntry";
@@ -11,28 +8,32 @@ import {SimpleHandleDay} from "./SimpleHandleDay";
 import {SimpleHandleEntry} from "./SimpleHandleEntry";
 
 export class CrawlerTinkering {
-    private readonly results: Entry[] = [];
-    private readonly handleDay: HandleDay;
-    private readonly handleEntry: HandleEntry;
+    public static readonly FILE_NAME = 'results.json';
 
-    public constructor(handleDay: HandleDay = new SimpleHandleDay(),
-                       handleEntry: HandleEntry = new SimpleHandleEntry()) {
-         this.handleDay = handleDay;
-         this.handleEntry = handleEntry;
+    private static format(dayOrMonth: string): string {
+        return dayOrMonth.length === 1 ? '0' + dayOrMonth : dayOrMonth;
     }
+
+    private readonly results: Entry[] = [];
+
+    public constructor(private readonly handleDay: HandleDay = new SimpleHandleDay(),
+                       private readonly handleEntry: HandleEntry = new SimpleHandleEntry(),
+                       private readonly dumpToFile: DumpToFile = new DumpToFile(CrawlerTinkering.FILE_NAME)) {}
 
     public async doCrawl(startDate: Moment, daysBack: number) {
         console.log('Start crawling!');
         try {
             for (let i: number = 1; i <= daysBack; i++) {
-                const queryDay = 'https://www.blickamabend.ch/suche/?q=single tages '
-                    + this.format(startDate.date().toString()) + this.format((startDate.month() + 1).toString());
+                const queryDay = 'https://www.blickamabend.ch/suche/?q=single tages ' +
+                    CrawlerTinkering.format(startDate.date().toString()) +
+                    CrawlerTinkering.format((startDate.month() + 1).toString());
                 console.log('Query: ' + queryDay);
-                const result: any[] = await this.handleDay.handleDay(queryDay);
-                for (const entry of result) {
+                const entryRefsForDay: any[] = await this.handleDay.handleDay(queryDay);
+                for (const entry of entryRefsForDay) {
                     await this.handleEntry.handleEntry(entry);
                 }
-                Array.prototype.push.apply(this.results, result);
+                this.dumpToFile.write(entryRefsForDay);
+                Array.prototype.push.apply(this.results, entryRefsForDay);
                 startDate.subtract(1, 'd');
             }
         } finally {
@@ -42,9 +43,5 @@ export class CrawlerTinkering {
 
     public getResults(): Entry[] {
         return this.results;
-    }
-
-    private format(dayOrMonth: string): string {
-        return dayOrMonth.length === 1 ? '0' + dayOrMonth : dayOrMonth;
     }
 }
