@@ -9,6 +9,12 @@ export class Entry {
         this.infos.set(info.key, info.value);
     }
 
+    public addInfos(infos: Map<string, string>) {
+        infos.forEach((value, key, map) => {
+            this.infos.set(key, value);
+        });
+    }
+
     public getInfos(): Map<string, string> {
         return this.infos;
     }

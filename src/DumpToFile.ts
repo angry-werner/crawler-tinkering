@@ -1,6 +1,7 @@
 import {Entry} from "./Entry";
 
 import * as Fs from 'fs';
+import {SerialisableEntry} from "./SerialisableEntry";
 
 export class DumpToFile {
     private firstWritten: boolean = false;
@@ -12,7 +13,7 @@ export class DumpToFile {
         try {
             fd = Fs.openSync(this.fileName, 'a');
             for (const entry of entries) {
-                Fs.appendFileSync(fd, this.writeComma() + JSON.stringify(entry), 'utf8');
+                Fs.appendFileSync(fd, this.writeComma() + JSON.stringify(SerialisableEntry.from(entry)), 'utf8');
             }
         } catch (err) {
             /* Handle the error */

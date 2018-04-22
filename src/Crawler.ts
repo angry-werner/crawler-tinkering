@@ -4,7 +4,7 @@ import {CrawlerTinkering} from './CrawlerTinkering';
 
 export class Crawler {
 
-    public static main(daysFromNow: number = 5) {
+    public static main(daysFromNow: number = 12) {
         const date: Moment = moment();
         date.subtract(daysFromNow, 'd');
 

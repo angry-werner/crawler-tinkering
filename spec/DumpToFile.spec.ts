@@ -1,6 +1,8 @@
 import * as Fs from 'fs';
 import {DumpToFile} from "../src/DumpToFile";
 import {Entry} from "../src/Entry";
+import {Info} from '../src/Info';
+import {SerialisableEntry} from "../src/SerialisableEntry";
 
 describe('Check if we can serialise stuff to the file system.', () => {
     const fileName: string = 'testFile.json';
@@ -36,10 +38,12 @@ describe('Check if we can serialise stuff to the file system.', () => {
         expect(readEntries.length).toBe(2);
     });
 
-    it('Write one after the other', () => {
+    fit('Write one after the other', () => {
         // Arrange
         const entry1: Entry = new Entry('01.01.2018', 'http://www.example1.org');
         const entry2: Entry = new Entry('02.02.2018', 'http://www.example2.org');
+        entry2.addInfo(new Info('foo', 'bar'));
+        entry2.addInfo(new Info('ugo', 'gaga'));
         // Act
         testee.write([entry1]);
         // Assert
@@ -50,8 +54,10 @@ describe('Check if we can serialise stuff to the file system.', () => {
         // Assert
         const readSecondEntries: any[] = parseNonArray();
         expect(readSecondEntries.length).toBe(2);
-        expect(new Entry(readSecondEntries[1].date, readSecondEntries[1].href)).toEqual(entry2);
-        expect(new Entry(readSecondEntries[0].date, readSecondEntries[0].href)).toEqual(entry1);
+        expect(SerialisableEntry
+            .to(readSecondEntries[1].date, readSecondEntries[1].href, readSecondEntries[1].infos)).toEqual(entry2);
+        expect(SerialisableEntry
+            .to(readSecondEntries[0].date, readSecondEntries[0].href, readSecondEntries[0].infos)).toEqual(entry1);
     });
 
     function parseNonArray(): Entry[] {
