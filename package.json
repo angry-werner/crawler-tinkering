@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jasmine-ts \"spec/**/*.spec.ts\"",
-    "build": "rimraf dist && tsc && node_modules/.bin/tslint --project . && npm run test",
+    "build": "rimraf dist && node_modules/typescript/bin/tsc && node_modules/.bin/tslint --project . && npm run test",
     "crawl": "node dist/Crawler.js"
   },
   "repository": {
@@ -20,8 +20,10 @@
   "homepage": "https://github.com/angry-werner/crawler-tinkering#readme",
   "dependencies": {
     "@types/node": "^9.6.5",
+    "@types/uuid": "^3.4.3",
     "@types/webdriverio": "^4.10.1",
     "moment": "^2.22.0",
+    "uuid": "^3.2.1",
     "webdriverio": "^4.12.0"
   },
   "devDependencies": {

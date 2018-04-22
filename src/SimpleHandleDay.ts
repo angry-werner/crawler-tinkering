@@ -1,3 +1,5 @@
+import * as UUID from 'uuid';
+
 import Client = WebdriverIO.Client;
 import RawResult = WebdriverIO.RawResult;
 
@@ -17,7 +19,7 @@ export class SimpleHandleDay implements HandleDay {
             const dateString: string = await session.elementIdElement(element.ELEMENT, 'span.time').getText();
             const linkElement: any = await session.elementIdElement(element.ELEMENT, 'a.news-links');
             const href = await session.elementIdAttribute(linkElement.value.ELEMENT, 'href');
-            results.push(new Entry(dateString, href.value));
+            results.push(new Entry(UUID.v4(), dateString, href.value));
         }
         session.end();
         return results;

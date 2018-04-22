@@ -7,7 +7,7 @@ import {Entry} from "../src/Entry";
 
 class DummyHandleDay implements HandleDay {
     public async handleDay(url: string): Promise<Entry[]> {
-        return [new Entry('13.02.2017', 'file:///home/kow/git/crawler-tinkering/spec/resources/PartnersucheDetail.html')];
+        return [new Entry('foo','13.02.2017', 'file:///home/kow/git/crawler-tinkering/spec/resources/PartnersucheDetail.html')];
     }
 }
 

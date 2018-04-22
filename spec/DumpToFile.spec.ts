@@ -28,8 +28,8 @@ describe('Check if we can serialise stuff to the file system.', () => {
 
     it('Write everything at once', () => {
         // Arrange
-        const entry1: Entry = new Entry('01.01.2018', 'http://www.example1.org');
-        const entry2: Entry = new Entry('02.02.2018', 'http://www.example2.org');
+        const entry1: Entry = new Entry('foo', '01.01.2018', 'http://www.example1.org');
+        const entry2: Entry = new Entry('bar', '02.02.2018', 'http://www.example2.org');
         const entries: Entry[] = [entry1, entry2];
         // Act
         testee.write(entries);
@@ -40,8 +40,8 @@ describe('Check if we can serialise stuff to the file system.', () => {
 
     it('Write one after the other', () => {
         // Arrange
-        const entry1: Entry = new Entry('01.01.2018', 'http://www.example1.org');
-        const entry2: Entry = new Entry('02.02.2018', 'http://www.example2.org');
+        const entry1: Entry = new Entry('foo', '01.01.2018', 'http://www.example1.org');
+        const entry2: Entry = new Entry('bar', '02.02.2018', 'http://www.example2.org');
         entry2.addInfo(new Info('foo', 'bar'));
         entry2.addInfo(new Info('ugo', 'gaga'));
         // Act
@@ -55,9 +55,11 @@ describe('Check if we can serialise stuff to the file system.', () => {
         const readSecondEntries: any[] = parseNonArray();
         expect(readSecondEntries.length).toBe(2);
         expect(SerialisableEntry
-            .to(readSecondEntries[1].date, readSecondEntries[1].href, readSecondEntries[1].infos)).toEqual(entry2);
+            .to(readSecondEntries[1].uuid, readSecondEntries[1].date, readSecondEntries[1].href
+                , readSecondEntries[1].infos)).toEqual(entry2);
         expect(SerialisableEntry
-            .to(readSecondEntries[0].date, readSecondEntries[0].href, readSecondEntries[0].infos)).toEqual(entry1);
+            .to(readSecondEntries[0].uuid, readSecondEntries[0].date, readSecondEntries[0].href
+                , readSecondEntries[0].infos)).toEqual(entry1);
     });
 
     function parseNonArray(): Entry[] {

@@ -38,4 +38,12 @@ export class SimpleHandleEntry implements HandleEntry {
             return new Info(text.substr(0, index).trimRight(), text.substring(index + 1).trimLeft());
         }
     }
+
+    private fetchPicture(entry: Entry) {
+        try {
+            //
+        } catch (error) {
+            //
+        }
+    }
 }
