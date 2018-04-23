@@ -1,6 +1,16 @@
-import Jasmine = require('jasmine');
 import {SimpleHandleEntry} from '../src/SimpleHandleEntry';
 import {Entry} from "../src/Entry";
+
+let originalTimeout: number;
+
+beforeEach(() => {
+    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
+});
+
+afterEach(() => {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
+});
 
 describe('Handle a single entry', () => {
     it('Happy case', async () => {

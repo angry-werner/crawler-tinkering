@@ -1,4 +1,3 @@
-import Jasmine = require('jasmine');
 import {Entry} from "../src/Entry";
 import {SimpleHandleDay} from '../src/SimpleHandleDay';
 

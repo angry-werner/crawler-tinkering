@@ -9,22 +9,23 @@ describe('Check if we can serialise stuff to the file system.', () => {
     let testee: DumpToFile;
 
     beforeEach(() => {
-        try {
-            Fs.unlinkSync(fileName);
-        } catch (error) {
-            console.log('Trouble deleting file: ' + JSON.stringify(error));
-        }
+        deleteFile();
         testee = new DumpToFile(fileName);
     });
 
     afterEach(() => {
-        try {
-            // Fs.unlinkSync(fileName);
-        } catch (error) {
-            console.log('Trouble deleting file: ' + JSON.stringify(error));
-        }
-
+        deleteFile();
     });
+
+    function deleteFile() {
+        try {
+            Fs.unlinkSync(fileName);
+        } catch (error) {
+            if (error.code !== 'ENOENT') {
+                console.log('Trouble deleting file: ' + JSON.stringify(error));
+            }
+        }
+    }
 
     it('Write everything at once', () => {
         // Arrange

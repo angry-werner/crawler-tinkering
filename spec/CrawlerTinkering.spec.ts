@@ -1,7 +1,6 @@
 import {CrawlerTinkering} from "../src/CrawlerTinkering";
 import * as Fs from "fs";
 import * as moment from "moment";
-import {Moment} from "moment";
 import {HandleDay} from "../src/HandleDay";
 import {Entry} from "../src/Entry";
 
@@ -12,13 +11,22 @@ class DummyHandleDay implements HandleDay {
 }
 
 beforeEach(() => {
+    deleteFile();
+});
+
+afterEach(() => {
+    deleteFile();
+});
+
+function deleteFile() {
     try {
         Fs.unlinkSync(CrawlerTinkering.FILE_NAME);
     } catch (error) {
-        console.log('Trouble deleting file: ' + JSON.stringify(error));
+        if (error.code !== 'ENOENT') {
+            console.log('Trouble deleting file: ' + JSON.stringify(error));
+        }
     }
-
-});
+}
 
 describe('Handle a full crawl', () => {
     it('Handle a happy case for one day', async () => {

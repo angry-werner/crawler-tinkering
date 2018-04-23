@@ -1,4 +1,3 @@
-import Jasmine = require('jasmine');
 import {StringCleaning} from '../src/StringCleaning';
 
 describe('String cleaning', () => {
