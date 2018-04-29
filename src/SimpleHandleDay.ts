@@ -15,11 +15,14 @@ export class SimpleHandleDay implements HandleDay {
         const results: Entry[] = [];
         const session: Client<RawResult<null>> & RawResult<null> = this.sessionFactory.createSession(url);
         const elements: any = await session.elements(SimpleHandleDay.HIT_LIST);
-        for (const element of elements.value) {
-            const dateString: string = await session.elementIdElement(element.ELEMENT, 'span.time').getText();
-            const linkElement: any = await session.elementIdElement(element.ELEMENT, 'a.news-links');
-            const href = await session.elementIdAttribute(linkElement.value.ELEMENT, 'href');
-            results.push(new Entry(UUID.v4(), dateString, href.value));
+        if (elements !== undefined && elements !== null && elements.value !== undefined && elements.value !== null &&
+            elements.value.length > 0) {
+             for (const element of elements.value) {
+                const dateString: string = await session.elementIdElement(element.ELEMENT, 'span.time').getText();
+                const linkElement: any = await session.elementIdElement(element.ELEMENT, 'a.news-links');
+                const href = await session.elementIdAttribute(linkElement.value.ELEMENT, 'href');
+                results.push(new Entry(UUID.v4(), dateString, href.value));
+            }
         }
         session.end();
         return results;

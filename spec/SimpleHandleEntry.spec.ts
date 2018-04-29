@@ -5,7 +5,7 @@ let originalTimeout: number;
 
 beforeEach(() => {
     originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
 });
 
 afterEach(() => {
@@ -14,9 +14,18 @@ afterEach(() => {
 
 describe('Handle a single entry', () => {
     it('Happy case', async () => {
-        const entry: Entry = new Entry('foo-bar','13.02.2017', 'file:///home/kow/git/crawler-tinkering/spec/resources/PartnersucheDetail.html');
+        const entry: Entry = new Entry('foo-bar','13.02.2017',
+            'file:///home/kow/git/crawler-tinkering/spec/resources/PartnersucheDetail.html');
         const result: Entry = await new SimpleHandleEntry().handleEntry(entry);
-        expect(result.getInfos().get('Titel')).toEqual('Tamara sucht einen Mann, der mich überrascht und berührt');
+        expect('Tamara sucht einen Mann, der mich überrascht und berührt').toEqual('' + result.getInfos().get('Titel'));
         expect(result.getInfos().size).toBe(16);
+    });
+
+    it('Happy case', async () => {
+        const entry: Entry = new Entry('foo-bar','13.02.2017',
+            'file:///home/kow/git/crawler-tinkering/spec/resources/PartnersucheDetail-anders.html');
+        const result: Entry = await new SimpleHandleEntry().handleEntry(entry);
+        expect('Enzo sucht eine selbstsichere Frau mit Persönlichkeit.').toEqual('' + result.getInfos().get('Titel'));
+        expect(result.getInfos().size).toBe(15);
     });
 });

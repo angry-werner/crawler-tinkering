@@ -4,11 +4,11 @@ import {CrawlerTinkering} from './CrawlerTinkering';
 
 export class Crawler {
 
-    public static main(daysFromNow: number = 13) {
+    public static main(daysFromNow: number = 126) {
         const date: Moment = moment();
         date.subtract(daysFromNow, 'd');
 
-        new CrawlerTinkering().doCrawl(date, 1).then((result) => {
+        new CrawlerTinkering().doCrawl(date, 15).then((result) => {
             if (result !== undefined) {
                 console.log('Result from top promise: ' + result);
             }

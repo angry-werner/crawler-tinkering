@@ -2,33 +2,40 @@ import Client = WebdriverIO.Client;
 import RawResult = WebdriverIO.RawResult;
 
 import {Entry} from './Entry';
+import {FetchPictureAndSave} from './FetchPictureAndSave';
 import {HandleEntry} from './HandleEntry';
 import {Info} from './Info';
 import {SessionFactory} from './SessionFactory';
 import {StringCleaning} from './StringCleaning';
 
 export class SimpleHandleEntry implements HandleEntry {
+    public static readonly PICTURE_HREF_TAG = 'picture-href';
     private static readonly TITLE_SELECTOR: string = '#page > .article > .articleHeader > h1';
     private static readonly PICTURE_SELECTOR: string = '#page > .article > .articleHeader > .picture-mini-caption > a';
     private static readonly ENTRY_SELECTOR: string = '#page > .article > .article-entry > .article_text > .vspace > p';
     private static readonly TITEL_TAG: string = 'Titel';
-    private static readonly PICTURE_HREF_TAG = 'picture-href';
     private readonly stringCleaning: StringCleaning = new StringCleaning();
     private readonly sessionFactory: SessionFactory = new SessionFactory();
+    private readonly pictureHandler: FetchPictureAndSave = new FetchPictureAndSave('pictures');
 
     public async handleEntry(entry: Entry): Promise<Entry> {
         const session: Client<RawResult<null>> & RawResult<null> = this.sessionFactory.createSession(entry.href);
         entry.addInfo(new Info(SimpleHandleEntry.TITEL_TAG,
             this.stringCleaning.clean(await session.element(SimpleHandleEntry.TITLE_SELECTOR).getText())));
         const linkElement: any = await session.element(SimpleHandleEntry.PICTURE_SELECTOR);
-        const href = await session.elementIdAttribute(linkElement.value.ELEMENT, 'href');
-        entry.addInfo(new Info(SimpleHandleEntry.PICTURE_HREF_TAG, href.value));
+        if (linkElement !== undefined && linkElement !== null && linkElement.value !== null &&
+            linkElement.value.ELEMENT !== null) {
+            const href = await session.elementIdAttribute(linkElement.value.ELEMENT, 'href');
+            entry.addInfo(new Info(SimpleHandleEntry.PICTURE_HREF_TAG, href.value));
+        }
         for (const element of (await session.elements(SimpleHandleEntry.ENTRY_SELECTOR)).value) {
             entry.addInfo(this.createInfo((await session.elementIdText(element.ELEMENT)).value));
         }
         entry.printToConsole();
         session.end();
         this.delay(Math.floor(Math.random() * 10 + 5));
+        // this.pictureHandler.fetchAndSave(entry);
+        // this.delay(Math.floor(Math.random() * 10 + 5));
         return entry;
     }
 
