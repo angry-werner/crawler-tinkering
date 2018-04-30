@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html prefix="fb: http://ogp.me/ns/fb# og: http://ogp.me/ns#" class=" js canvas no-touch geolocation history websockets cssanimations csstransforms csstransforms3d csstransitions video audio localstorage svg" style="" lang="de"><head>
+
+    <!-- Page hiding snippet (recommended) -->
+        <style>.async-hide { opacity: 0 !important} </style>
+        <script async="" src="TrefferMitPaging-Dateien/tagger.js"></script><script async="" src="TrefferMitPaging-Dateien/rp.js"></script><script type="text/javascript" async="" src="TrefferMitPaging-Dateien/analytics.js"></script><script type="text/javascript" async="" src="TrefferMitPaging-Dateien/linkid.js"></script><script type="text/javascript" async="" src="TrefferMitPaging-Dateien/a"></script><script type="text/javascript" async="" src="TrefferMitPaging-Dateien/cx.js"></script><script async="" src="TrefferMitPaging-Dateien/a0b44a40-b8d9-4ce4-826d-e0f4717738a7.js"></script><script id="twitter-wjs" async="" defer="defer" src="TrefferMitPaging-Dateien/widgets.js"></script><script type="text/javascript" async="" src="TrefferMitPaging-Dateien/js.js"></script><script async="" src="TrefferMitPaging-Dateien/gtm.js"></script><script async="" src="TrefferMitPaging-Dateien/analytics.js"></script><script>
+            (function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+                h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+                (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+            })(window,document.documentElement,'async-hide','dataLayer',500,
+                    {'GTM-TSV56JZ':true});
+        </script>
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var s_account='ringierag-blick';
+    /* ]]> */
+</script>
+<script type="text/javascript" src="TrefferMitPaging-Dateien/scz_code.js"></script>
+<script type="text/javascript">
+    /* <![CDATA[ */
+    var _sf_startpt=(new Date()).getTime();// Chartbeat
+    var WEMF_section='/suche';
+    scz.special='ressort';
+
+    document.addEventListener('DOMContentLoaded',function(){
+        if(typeof(dataLayer) != 'undefined'){
+            dataLayer.push({'event': 'wemfSection'});
+        }
+    });
+
+    function getWEMF(caller){
+        if(typeof(dataLayer) != 'undefined'){
+            dataLayer.push({'event': 'wemfSection'}); /* GTM Pageview */
+        }
+    }
+
+    function setDefaultProperties(category,agof,swipe){delomni();scz.prop4='Nachrichten, die wirklich unterhalten - Blick am Abend';scz.pageName='suche';scz.channel='suche';if(category){scz.prop6=category;}else{scz.prop6='ressort';}if(swipe){scz.prop12=swipe;}scz.prop13=scz.special;if(agof){scz.prop7=agof;}else{scz.prop7='/suche';}scz.prop15='single tages';if(category=='artikel'||category=='video'||category=='slideshow'||category=='fehler'){scz.prop17=scz.prop6+':suche';};scz.trackingServer='omni.blick.ch';scz.hier1=scz.pageName;}
+
+    
+
+    getomni('ressort','');
+    /* ]]> */
+</script>
+<script>
+        
+
+        function isArticle(url) {
+            if (typeof url !== 'undefined') {
+                var patt = /id(\d{7,9})\.html/g;
+                var match = patt.exec(url);
+                return(match ? match[1] : false);
+            }
+            return false;
+        };
+
+        function DeviceIsTouchEnabled()
+        {
+            var isTouchEnabled=false;
+            if(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+                isTouchEnabled = true;
+            }
+            return isTouchEnabled;
+        }
+
+        var sDefaultSwipeValue=DeviceIsTouchEnabled() ? 'tap':'click';
+
+        function googleTagManagerVariables(category,agof,swipe,requestType,slideShowStats,callbackFunction)
+        {
+            //console.log("GTM Vars -> googleTagManager.jsp");
+            requestType=(typeof requestType !=='undefined' ? requestType :'ajax');
+
+            var sTrackCustomLinkText='';
+            var authorIds=[];
+            authorIds.push();
+
+            if(requestType=='ajax')
+            {
+                if(category == 'trackCustomLink')
+                {
+                    sTrackCustomLinkText=scz.prop27;
+                }
+                scz.prop6=category;
+
+                swipe=swipe||sDefaultSwipeValue;
+                swipe=((swipe == 'click' || swipe == 'touch') && DeviceIsTouchEnabled()) ? sDefaultSwipeValue:sDefaultSwipeValue;
+            }
+
+            //Fixed this way for compactibility to old newStats calls
+            //console.log('googleTagManager category -> '+ category + 'requestType: '+requestType);
+
+            //Only if Logged in
+
+            var userId;
+            var userIdSex;
+            if(typeof getCookie('communitydata2') !== 'undefined')
+            {
+                var userData = getCookie('communitydata2').split('|');
+                if (typeof userData[0] !== 'undefined' && userData[0]!="") {userId=userData[0]; }
+                if (typeof userData[1] !== 'undefined' && userData[1]!="") {userIdSex=userData[1]; }
+            }
+            var dataLayerVars = {
+            'articleID': isArticle(location.href),
+            'authorIds':authorIds,
+            'CRMAuthor': '',
+            'CRMCreator': '',
+            'webAppMode':((("standalone" in window.navigator) && window.navigator.standalone) ? true:false),
+            'articleName': scz.prop4,
+            'articleCreatedDate': scz.prop8,
+            'slideShowStats':slideShowStats,
+            'pageName': scz.pageName,
+            'context': scz.prop6,
+            'metaSpecial': scz.prop13,
+            'userId': userId,
+            'userIdSex': userIdSex,
+            'interaction':swipe,
+            'category':category,
+            'wemfSection':'/suche',
+            'requestType':requestType,
+            'requestSource':'baaz_web',
+            'trackCustomLinkValue':sTrackCustomLinkText,
+            'eventCallback' : (callbackFunction!=='undefined'? callbackFunction:undefined),
+            'hasArticleText':'',
+            'articleLength':'',
+            'hasImage':'',
+            'hasSlideshow':'',
+            'slidesNumber':'',
+            'has360':'',
+            'hasVideo':'',
+            'hasLivestream':'',
+            'hasLiveticker':'',
+            'hasLiveMatch':'',
+            'hasInteractive':'',
+            'isSobli':'',
+            'chartbeatSite': 'blickamabend.ch','chartbeatUid': 27225,
+            'hasInfografik': ''
+            };
+
+            
+
+
+
+            if(requestType=='ajax')
+            {
+                //Following are ajax functions which swipe variable is empty
+                var exceptionList = [''];
+                //scz.prop12 = swipe | scz.prop6 = context
+                if((typeof swipe !=='undefined') || exceptionList.inArray(scz.prop6))
+                {
+                    dataLayerVars['event']=scz.prop6;
+                }
+                else
+                {
+                    dataLayerVars['event']='ajaxPageload';
+                }
+            }
+            var dataLayer;
+
+            if(requestType == 'initial')
+            {
+                dataLayer=[];
+                dataLayer.push(dataLayerVars);
+
+                //console.log('Initial do GoogleTagManager -> googleTagManagerCall -> '+JSON.stringify(dataLayerVars));
+            }
+            else
+            {
+                dataLayer=dataLayerVars;
+            }
+
+            return dataLayer;
+        }
+
+        function googleTagManagerCall(category,agof,swipe,requestType,slideShowStats,callbackFunction)
+        {
+            //console.log("GTM Call -> googleTagManager.jsp");
+           
+            var dataLayerVars = googleTagManagerVariables(category,agof,swipe,requestType,slideShowStats,callbackFunction);
+            //console.log('Do Google Tag Manager AJAX Call with dataLayerVars -> '+JSON.stringify(dataLayerVars));
+            dataLayer.push(dataLayerVars);
+        }
+
+        function trackGTMandRedirect(eventName,trackingName,targetUrl)
+        {
+            googleTagManagerCall(eventName,'','','ajax',{'trackingName':trackingName},(function () {function redirect(targetUrl){location.href=targetUrl;} redirect(targetUrl);} ()));
+            return false;
+        }
+
+        Array.prototype.inArray = function (value)
+        {
+            // Returns true if the passed value is found in the
+            // array. Returns false if it is not.
+                var i;
+                for (i=0; i < this.length; i++) {
+                // Matches identical (===), not just similar (==).
+                if (this[i] === value) {
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        
+            var dataLayer = googleTagManagerVariables('ressort','','','initial');
+        
+        //console.log('Do Google Tag Manager INITIAL Call with dataLayerVars -> '+JSON.stringify(dataLayer));
+        </script>
+        <!-- Start Google Tag Manager -->
+            <script>
+        
+                    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+                    
+                    var cx_articleids = [ "3388299", "5539965", "6199658", "4843067" ];
+                    
+                    ga('create', 'UA-54102511-2', 'auto');
+                    ga('require', 'GTM-TSV56JZ');
+                
+
+
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-PS2PDM');
+
+                </script>
+            <!-- End Google Tag Manager -->
+        <title>Nachrichten, die wirklich unterhalten - Blick am Abend</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description" content="News zu Suche, die dich unterhalten">
+            <meta itemprop="description" content="News zu Suche, die dich unterhalten">
+        <meta name="keywords" content="Suche">
+        <meta name="news_keywords" content="Suche">
+                <meta name="author" content="Blick am Abend">
+<meta name="robots" content="index,follow,noodp,noarchive">
+    <meta name="cXenseParse:pageclass" content="frontpage">
+    <meta name="cXenseParse:url" value="https://www.blickamabend.ch/suche/">
+<meta property="og:url" content="https://www.blickamabend.ch/suche/">
+<meta property="fb:pages" content="62562538918">
+<meta property="fb:pages" content="87710839627">
+<meta property="fb:pages" content="1555899184693713">
+<meta property="fb:pages" content="436544309865663">
+<meta property="fb:pages" content="1867745950127803">
+<meta property="fb:pages" content="1161741040558905">
+<meta property="fb:pages" content="1100174536741426">
+<meta property="fb:pages" content="1637480643237024">
+<meta property="fb:pages" content="1454847267864288">
+<meta property="fb:pages" content="524731641250541">
+<meta property="fb:pages" content="404314076359055">
+<!-- Blick-Kanal (bolzurich) -->
+<meta name="google-site-verification" content="C1lCSj-OcwR549EmccB49Y8L2_9C1shzE9ZO4y4x-so">
+<!-- Sport-Kanal (blicksport) -->
+<meta name="google-site-verification" content="q5yTS32Nn7X9c9xup6z3whp6uOMxwY6P8cIq1SIvq08">
+
+<link rel="canonical" href="https://www.blickamabend.ch/suche/">
+<!-- bu: https://www.blickamabend.ch/ -->
+<link rel="apple-touch-icon" href="https://f.blickamabend.ch/resources/BAAZ_20180412/ver1-0/img/icon-128-precomposed.png" type="image/png">
+<link rel="shortcut icon" href="https://f.blickamabend.ch/resources/BAAZ_20180412/ver1-0/img/favicon.ico" type="image/x-icon">
+<meta name="apple-itunes-app" content="app-id=458314022">
+<link href="TrefferMitPaging-Dateien/videojs.css" rel="stylesheet" type="text/css">
+
+<link rel="publisher" href="https://plus.google.com/109881084743199096620">
+<meta property="fb:app_id" content="1461265510767149">
+    <link rel="alternate" type="application/rss+xml" title="RSS Blick am Abend Suche" href="https://www.blickamabend.ch/suche/rss">
+            <!--[if !IE]><!-->
+            <link rel="stylesheet" type="text/css" href="TrefferMitPaging-Dateien/styles.css" media="screen, projection, print">
+            <!--<![endif]-->
+            <!--[if IE]>
+            <link rel="stylesheet" type="text/css" href="https://f.blickamabend.ch/resources/BAAZ_20180412/ver1-0/css/ie-split.css" media="screen, projection, print"/>
+            <![endif]-->
+            <!--[if IE 6]>
+            <link rel="stylesheet" type="text/css" href="https://f.blickamabend.ch/resources/BAAZ_20180412/ver1-0/css/ie6.css" />
+            <![endif]-->
+            <!--[if gte IE 7]>
+            <link rel="stylesheet" type="text/css" href="https://f.blickamabend.ch/resources/BAAZ_20180412/ver1-0/css/ie789.css" />
+            <![endif]-->
+            <link rel="stylesheet" type="text/css" href="TrefferMitPaging-Dateien/print.css" media="print">
+            <script type="text/javascript" src="TrefferMitPaging-Dateien/DAC.js"></script>
+                    <script type="text/javascript">
+                        function getViewPort(){
+                            var	screenWidth, screenHeight;
+                            if(	typeof window.innerWidth ==	'number' ){
+                                screenWidth	= window.innerWidth;
+                                screenHeight = window.innerHeight;
+                            }
+                            else if( document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight) ){
+                                screenWidth	= document.documentElement.clientWidth;
+                                screenHeight = document.documentElement.clientHeight;
+                            }
+                            else if( document.body &&	(document.body.clientWidth || document.body.clientHeight) ){
+                                screenWidth	= document.body.clientWidth;
+                                screenHeight = document.body.clientHeight;
+                            }
+                            return{	width: screenWidth,	height:	screenHeight };
+                        }
+                        function getTagInfo(){
+                            var	viewPort = getViewPort();
+                            var	domain = 'adserver.adtech.de';
+                            return{	domain:	domain,	viewPort: viewPort }
+                        }
+                        var info = getTagInfo();
+                        ADTECH.config.page = { protocol: 'https', server: info.domain, network: '780.2', urlTargeting:{doTargeting:true}, siteid: '122004', params:{loc:'100'}, kv:{ scrbrt: info.viewPort.width } };
+                    </script>
+                <script type="text/javascript" src="TrefferMitPaging-Dateien/jquery.js"></script>
+            <script type="text/javascript" src="TrefferMitPaging-Dateien/allJsFiles.js"></script>
+        <script type="text/javascript">
+        window.twttr = (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                    t = window.twttr || {};
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.async = 1;
+            js.defer = 1;
+            js.src = "//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+            t._e = [];
+            t.ready = function(f) {
+                t._e.push(f);
+            };
+            return t;
+        }(document, "script", "twitter-wjs"));
+    </script>
+    <script src="TrefferMitPaging-Dateien/a_002" async=""></script><script type="text/javascript" charset="utf-8" async="" src="TrefferMitPaging-Dateien/timeline.js"></script><script async="" src="TrefferMitPaging-Dateien/mtrcs_368021_002.js"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_customer_chat_bounce_in{animation-duration:250ms;animation-name:fb_bounce_in}.fb_customer_chat_bounce_out{animation-duration:250ms;animation-name:fb_fade_out}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{background-color:#fff;height:100%;overflow:hidden;position:fixed;visibility:hidden;width:100%}@keyframes fb_fade_out{from{opacity:1}to{opacity:0}}@keyframes fb_bounce_in{0%{opacity:0;transform:scale(.8, .8);transform-origin:100% 100%}10%{opacity:.1}20%{opacity:.2}30%{opacity:.3}40%{opacity:.4}50%{opacity:.5}60%{opacity:.6}70%{opacity:.7}80%{opacity:.8;transform:scale(1.03, 1.03)}90{opacity:.9}100%{opacity:1;transform:scale(1, 1)}}</style></head>
+<body class=" suchebaaz">
+<!-- HTTPS:  -->
+
+
+<script type="text/javascript">
+    (function(window, document, script, dataLayer, id) {
+        window[dataLayer]=window[dataLayer]||[],window[dataLayer].push({start:(new Date).getTime(),event:"stg.start"});
+        var scripts=document.getElementsByTagName(script)[0],tags=document.createElement(script),dl="dataLayer"!=dataLayer?"?dataLayer="+dataLayer:"";
+        tags.async=!0,tags.src="//7.p.tdf.ringier.ch/a0b44a40-b8d9-4ce4-826d-e0f4717738a7.js"+dl,scripts.parentNode.insertBefore(tags,scripts);
+    })(window, document, 'script', 'dataLayer', 'a0b44a40-b8d9-4ce4-826d-e0f4717738a7');
+</script>
+<noscript>
+    <iframe src=“//7.p.tdf.ringier.ch/a0b44a40-b8d9-4ce4-826d-e0f4717738a7/noscript.html" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+
+<!-- Start Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id="
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" style="border: medium none;" src="TrefferMitPaging-Dateien/JW5GlLnAsFw.html" frameborder="0"></iframe></div></div></div>
+<script type="text/javascript">
+    /* <![CDATA[ */
+    var fbAsyncIds = [],
+        fbStatUrls = [];
+    $(window).load(function () {
+        $.getScript('//connect.facebook.net/de_DE/sdk.js', function () {
+            FB.init({version:'v2.10',appId: '1461265510767149', cookie: 'www.blickamabend.ch', oauth: true,channelUrl:'https://www.blickamabend.ch/resources/ver1-0/channel.html'});
+            $('.fblb').each(function () {
+                FB.XFBML.parse($(this).get(0));
+            });
+        });
+        window.fbAsyncInit = function() {
+            for (var i = 0; i < fbAsyncIds.length; i++) {
+                FB.XFBML.parse($('#' + fbAsyncIds[i]).get(0));
+                FB.Event.subscribe('edge.create', function (href, widget) {
+                    try {
+                        if (facebookLikes == 0) {
+                            trackLike(fbStatUrls[i++]);
+                            facebookLikes++;
+                        }
+                    } catch (e) {}
+                });
+            }
+        };
+    });
+    function enableFullscreenControl(){return -1}
+    function finishedLoading(){videoTag.removeEventListener('timeupdate', finishedLoading ,false);return -1}
+    /* ]]> */
+</script>
+
+<a id="top"></a>
+
+<!--googleoff: index--><div id="background_outer">
+	</div>
+<div id="header_outer" class="" style="margin-top: 0px;">
+    <div id="header" class="clearfix" style="">
+        <div id="logo">
+		            <a title="Blick am Abend - News, die wirklich unterhalten" href="https://www.blickamabend.ch/">Blick am Abend - News, die wirklich unterhalten</a>
+		        </div>
+	    	<div id="logo_print"><img src="TrefferMitPaging-Dateien/logo_print.png" alt="Blick am Abend - News, die wirklich unterhalten"></div>
+    <div class="headerRight">
+            <ul id="mainNavigation" class="">
+    <li class="first"><a class="" href="https://www.blickamabend.ch/very-best-of/" title="Very Best Of">Very Best Of</a></li>
+                <li class=""><a class="" href="https://www.blickamabend.ch/news/" title="News">News</a></li>
+                <li class=""><a class="" href="https://www.blickamabend.ch/promi-news/" title="Promi-News">Promi-News</a></li>
+                <li class=""><a class="" href="https://www.blickamabend.ch/sport/" title="Sport">Sport</a></li>
+                <li class=""><a class="" href="https://www.blickamabend.ch/kolumnen/" title="Kolumnen">Kolumnen</a></li>
+                <li class=""><a class="" href="https://www.blickamabend.ch/video/" title="Video">Video</a></li>
+                <li class=""><a class="" href="https://www.blickamabend.ch/quiz/" title="Quiz">Quiz</a></li>
+                <li class=""><a class="" href="https://reader.ringier.ch/blick-am-abend" title="ePaper" target="_blank">ePaper</a></li>
+                <li class="last"><div class="search_form clearfix" style="margin-right: 21px;"> 		<label class="fl" title="suchbegriff"><input style="border: none; padding: 5px; display:none;" id="_searchslotfwid0" class="ui-autocomplete-input" title="Suchbegriff..." autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" type="text"> 		</label> 		<a style="font-size: 5em; margin-left: 5px; margin-top: 2px; height: 10px; width: 5px; border: none;" class="icon-ico-00-search" href="javascript:void(0);" onclick="location.href='//www.blickamabend.ch/suche/?q='"></a></div></li>
+                </ul>
+<div id="community_login_register" style="margin-top: 16px; margin-right: 15px;">
+				<div id="userDataLoged" style="display:none">
+					<a id="userNameLink" href="#" style="color: white; font-family: TazBold; font-size: 16px;">Hallo:&nbsp;</a> <span style="color: white;">|</span>
+					<a id="editAccountLink" href="https://www.blickamabend.ch/services/personal/" style="color: white; font-family: TazBold; font-size: 16px;" title=""><strong>Mein Konto</strong></a> <span style="color: white;">|</span>
+					<a id="logout-button" href="" title="" style="color: white; font-family: TazBold; font-size: 16px;"><strong>Abmelden</strong></a>
+				</div>
+				<div id="userDataUnloged">
+					<a style="color: white; font-size: 16px; font-family: TazBold;" id="topLogin" href="#loginModal" title="Login"><strong>Anmelden</strong></a> <span class="hlight">
+					</span></div>
+	</div>
+<script type="text/javascript">
+/* <![CDATA[ */
+$(document).ready(function(){initLogin('https://www.blickamabend.ch/','https://www.blickamabend.ch/widget/id2562689?view=ajax', 'https://www.blickamabend.ch/twitter/login')});
+/* ]]> */
+</script>
+	</div>
+    </div>
+</div>
+<div id="submenu_outer">
+    <div id="submenu">
+        <div class="socialIcon-container">
+    <a href="https://www.facebook.com/blickamabend/" target="_blank"><div class="iconFacebook_outer"><div id="iconFacebook" class="socialIcon-fb icon-ico-03-facebook"></div></div></a>
+    <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fwww.blickamabend.ch%2F&amp;ref_src=twsrc%5Etfw&amp;region=follow_link&amp;screen_name=blickamabend&amp;tw_p=followbutton" data-lang="en" data-show-count="true" data-show-screen-name="false" data-dnt="true">
+    <div class="iconTwitter_outer">
+        <div class="socialIcon-twitter icon-ico-03-twitter"></div>
+    </div></a>
+
+    <a href="https://www.instagram.com/blickamabend/" target="_blank"><div class="iconInstagram_outer">
+        <div class="socialIcon-instagram icon-ico-07-instagram"></div>
+    </div></a>
+
+    <a href="https://www.blickamabend.ch/news/hier-gehts-lang-so-findest-du-uns-auf-snapchat-id4193746.html" target="_blank"><div class="iconSnap_outer">
+        <div class="socialIcon-snap iconsnap-ico-07-snapchat"></div>
+    </div></a>
+</div><div class="navbar-header" id="category-navigation">
+	<ul>
+	<li>
+			<a class="flag_badge" href="https://www.blickamabend.ch/trending">
+				<span class="badgeIconTop" style="background-color:#CD008B;">
+					<span class="left bg"></span><span class="right bg"></span>
+					<span class="left" style="border-color: transparent #CD008B;"></span>
+					<span class="right" style="border-color: transparent #CD008B;"></span>
+					<span class="outerLeft bg"></span>
+					<span class="outerLeft" style="border-color: transparent #CD008B;"></span>
+					<img src="TrefferMitPaging-Dateien/Trending-Badge.png" alt="Trending" width="56" height="66">
+					</span>
+			</a>
+			<div style="display:none">
+				</div>
+		</li>
+	<li>
+			<a class="flag_badge" href="https://www.blickamabend.ch/krass">
+				<span class="badgeIconTop" style="background-color:#1E90C9;">
+					<span class="left bg"></span><span class="right bg"></span>
+					<span class="left" style="border-color: transparent #1E90C9;"></span>
+					<span class="right" style="border-color: transparent #1E90C9;"></span>
+					<span class="outerLeft bg"></span>
+					<span class="outerLeft" style="border-color: transparent #1E90C9;"></span>
+					<img src="TrefferMitPaging-Dateien/Krass-Badge.png" alt="Krass" width="56" height="66">
+					</span>
+			</a>
+			<div style="display:none">
+				</div>
+		</li>
+	<li>
+			<a class="flag_badge" href="https://www.blickamabend.ch/fail">
+				<span class="badgeIconTop" style="background-color:#1E90C9;">
+					<span class="left bg"></span><span class="right bg"></span>
+					<span class="left" style="border-color: transparent #1E90C9;"></span>
+					<span class="right" style="border-color: transparent #1E90C9;"></span>
+					<span class="outerLeft bg"></span>
+					<span class="outerLeft" style="border-color: transparent #1E90C9;"></span>
+					<img src="TrefferMitPaging-Dateien/Fail-Badge.png" alt="Fail" width="56" height="66">
+					</span>
+			</a>
+			<div style="display:none">
+				</div>
+		</li>
+	<li>
+			<a class="flag_badge" href="https://www.blickamabend.ch/funny">
+				<span class="badgeIconTop" style="background-color:#1E90C9;">
+					<span class="left bg"></span><span class="right bg"></span>
+					<span class="left" style="border-color: transparent #1E90C9;"></span>
+					<span class="right" style="border-color: transparent #1E90C9;"></span>
+					<span class="outerLeft bg"></span>
+					<span class="outerLeft" style="border-color: transparent #1E90C9;"></span>
+					<img src="TrefferMitPaging-Dateien/funny-badge-groesser-hoeher.png" alt="Funny" width="56" height="66">
+					</span>
+			</a>
+			<div style="display:none">
+				</div>
+		</li>
+	<li>
+			<a class="flag_badge" href="https://www.blickamabend.ch/joeoe">
+				<span class="badgeIconTop" style="background-color:#1E90C9;">
+					<span class="left bg"></span><span class="right bg"></span>
+					<span class="left" style="border-color: transparent #1E90C9;"></span>
+					<span class="right" style="border-color: transparent #1E90C9;"></span>
+					<span class="outerLeft bg"></span>
+					<span class="outerLeft" style="border-color: transparent #1E90C9;"></span>
+					<img src="TrefferMitPaging-Dateien/Joeoe-Badge.png" alt="Jöö" width="56" height="66">
+					</span>
+			</a>
+			<div style="display:none">
+				</div>
+		</li>
+	<li>
+			<a class="flag_badge" href="https://www.blickamabend.ch/super">
+				<span class="badgeIconTop" style="background-color:#1E90C9;">
+					<span class="left bg"></span><span class="right bg"></span>
+					<span class="left" style="border-color: transparent #1E90C9;"></span>
+					<span class="right" style="border-color: transparent #1E90C9;"></span>
+					<span class="outerLeft bg"></span>
+					<span class="outerLeft" style="border-color: transparent #1E90C9;"></span>
+					<img src="TrefferMitPaging-Dateien/Super-Badge.png" alt="Super" width="56" height="66">
+					</span>
+			</a>
+			<div style="display:none">
+				</div>
+		</li>
+	<li>
+			<a class="flag_badge" href="https://www.blickamabend.ch/good-news">
+				<span class="badgeIconTop" style="background-color:#1E90C9;">
+					<span class="left bg"></span><span class="right bg"></span>
+					<span class="left" style="border-color: transparent #1E90C9;"></span>
+					<span class="right" style="border-color: transparent #1E90C9;"></span>
+					<span class="outerLeft bg"></span>
+					<span class="outerLeft" style="border-color: transparent #1E90C9;"></span>
+					<img src="TrefferMitPaging-Dateien/GoodNews-Badge.png" alt="Good News" width="56" height="66">
+					</span>
+			</a>
+			<div style="display:none">
+				</div>
+		</li>
+	</ul>
+</div></div>
+</div>
+<div id="content_header">
+	</div>
+<style>
+        .teaserOverlay
+        {
+            width:90%;
+            max-width:440px;
+            left:0px;
+            right:0px;
+            height:420px;
+            display:none;
+            position:fixed;
+            z-index:1000;
+            margin:60px auto 10px auto;
+            background: rgb(203,96,179); /* Old browsers */
+            background: -moz-linear-gradient(top, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 50%, rgba(168,0,119,1) 51%, rgba(219,54,164,1) 90%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(203,96,179,1)), color-stop(50%,rgba(193,70,161,1)), color-stop(51%,rgba(168,0,119,1)), color-stop(90%,rgba(219,54,164,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top, rgba(203,96,179,1) 0%,rgba(193,70,161,1) 50%,rgba(168,0,119,1) 51%,rgba(219,54,164,1) 90%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top, rgba(203,96,179,1) 0%,rgba(193,70,161,1) 50%,rgba(168,0,119,1) 51%,rgba(219,54,164,1) 90%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top, rgba(203,96,179,1) 0%,rgba(193,70,161,1) 50%,rgba(168,0,119,1) 51%,rgba(219,54,164,1) 90%); /* IE10+ */
+            background: linear-gradient(to bottom, rgba(203,96,179,1) 0px,rgba(193,70,161,1) 270px,rgba(168,0,119,1) 274px,rgba(219,54,164,1) 440px); /* W3C */
+            border-radius:8px;
+            padding:10px;
+            -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+            -ms-transition: all 1s ease;
+            -o-transition: all 1s ease;
+            transition: all 1s ease;
+            opacity:0;
+            behavior: url(/resources/ver1-0/css/PIE.htc);
+        }
+        .teaserOverlay.fadeIn
+        {
+            opacity:1;
+        }
+
+        .teaserOverlay.addBlock
+        {
+            display:block;
+        }
+
+        .teaserOverlay a.boxcloseGame
+        {
+            float:right;
+            cursor:pointer;
+            color: rgb(203,96,179);
+            border: 1px solid #FFFFFF;
+            border-radius: 14px;
+            background: #ffffff;
+            font-size: 28px;
+            font-weight: bold;
+            display: inline-block;
+            line-height: 0px;
+            padding: 12px 5px;
+            behavior: url(/resources/ver1-0/css/PIE.htc);
+        }
+
+        .teaserOverlay a.boxcloseGame:hover
+        {
+            text-decoration:none;
+        }
+
+        body.iphoneImportant .teaserOverlay a.boxcloseGame
+        {
+            padding: 12px 4px;
+        }
+
+        .teaserOverlay .boxcloseGame:before
+        {
+            content: "×";
+        }
+        .teaserOverlay span.heading
+        {
+            font-family:"TazBlack", Arial, Helvetica, Geneva, sans-serif;
+            color:#FFF;
+            font-size:20px;
+            padding:20px 20px 10px 20px;
+            display:block;
+        }
+        .teaserOverlay .item
+        {
+            width:200px;height:200px;border-radius:100px;
+            margin:auto;
+            background-color:#FFF;
+            box-shadow: inset 0px 0px 20px 0px rgb(203,96,179);
+            -webkit-box-shadow: inset 0px 0px 20px 0px rgb(203,96,179);
+            -moz-box-shadow: inset 0px 0px 20px 0px rgb(203,96,179);
+            -o-box-shadow: inset 0px 0px 20px 0px rgb(203,96,179);
+            overflow:hidden;
+            behavior: url(/resources/ver1-0/css/PIE.htc);
+        }
+
+        .teaserOverlay .itemPicture
+        {
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            position: relative;
+            top: 50%;
+            width:125px;
+            height:125px;
+            margin:auto;
+            text-align:center;
+        }
+
+        .teaserOverlay .submit4Game
+        {
+            font-family:'TazBlack';
+            padding: 8px 15px;
+            border-radius:5px;
+            float:left;
+            display:inline-block;
+            background-color:#FFFFFF;
+            color:#d2008c;
+            text-align:center;
+            behavior: url(/resources/ver1-0/css/PIE.htc);
+        }
+
+        .teaserOverlay .submitArea
+        {
+            width:128px;
+            height:21px;
+            margin:15px auto 0px;
+        }
+
+        .teaserOverlay .submitArea.submitForm
+        {
+            width:110px;
+        }
+
+        
+
+                .teaserOverlay  span.heading
+                {
+                    font-family:"TazBold", Arial, Helvetica, Geneva, sans-serif;
+                    line-height:26px;
+                    padding-right:30px;
+                    display:block;
+                }
+                .teaserOverlay
+                {
+                    margin-top:0px;
+                }
+
+                .teaserOverlay a.boxcloseGame
+                {
+                    font-size: 25px;
+                }
+
+                .teaserOverlay .submitArea
+                {
+                    width:151px;
+                    font-size:20px;
+                }
+
+                .teaserOverlay .submitArea.submitForm
+                {
+                    width:130px;
+                    font-size:20px;
+                }
+
+                .teaserOverlay .itemPicture
+                {
+                display: inline-block;
+                vertical-align:middle;
+                margin-left:auto;
+                margin-right:auto;
+                position:absolute;
+                top:0px;
+                bottom:0px;
+                left:0px;
+                right:0px;
+                transform:none;
+                -webkit-transform:none;
+                -ms-transform:none;
+                padding:0px;
+                }
+
+                </style>
+
+        <div id="searchItemGame" class="teaserOverlay">
+            <a class="boxcloseGame" href="#"></a>
+            <span class="heading">Finde den folgenden Gegenstand beim Surfen auf Blickamabend.ch und gewinne tolle Preise!</span>
+            <div class="item">
+                <img src="TrefferMitPaging-Dateien/Gegenstand-Teddy-geschnitten.jpg" class="itemPicture">
+            </div>
+            <div class="submitArea">
+                <a class="submit4Game" href="#">Suche starten</a>
+            </div>
+        </div>
+
+        <div id="searchItemGameFound" class="teaserOverlay">
+            <a class="boxcloseGame" href="#"></a>
+            <span class="heading">Du hast den Gegenstand gefunden! Klicke auf Mitmachen und nehme am Gewinnspiel teil.</span>
+            <div class="item">
+                <img src="TrefferMitPaging-Dateien/Gegenstand-Teddy-geschnitten.jpg" class="itemPicture">
+            </div>
+            <div class="submitArea submitForm">
+                <a class="submit4Game" href="#">Mitmachen</a>
+            </div>
+        </div>
+    <!--googleon: index--><div id="content_outer">
+    <div class="container_18">
+        <div id="container" style="">
+            <div class="grid_12 leftElement"><div class="list vspace">
+		<div class="search-form">
+			<fieldset>
+				<span>Deine Suche</span>
+				<label class="fl" title="suchbegriff">
+				    <input id="searchslotfwid0" name="q" onkeyup="if(event.keyCode==13){location.href='https://www.blickamabend.ch/suche/?q='+$('#searchslotfwid0').val();}" onblur="if (this.value == ''){this.value = 'Suchbegriff...';}" onfocus="if (this.value == 'Suchbegriff...') {this.value = '';}" value="Suchbegriff..." title="Suchbegriff..." type="text">
+				</label>
+				<a href="javascript:void(0);" onclick="if ('Suchbegriff...'==document.getElementById('searchslotfwid0').value) {document.getElementById('searchslotfwid0').value = '';}location.href='https://www.blickamabend.ch/suche/?q='+$('#searchslotfwid0').val();" class="cf091a">Suchen</a>
+			</fieldset>
+		</div>
+	</div>
+
+<script>var totalSearchCount=1935;</script>
+    <div class="list">
+
+    <div class="search-sort">
+        <span class="tab"><span><a href="https://www.blickamabend.ch/suche/?q=single%20tages&amp;sort=recs-publishtime">Datum</a></span></span>
+                <span class="tab active"><span class="cf091a">Relevanz</span></span>
+            <span>Sortieren nach</span>
+        Suchergebnisse 201 - 210 von 1935</div>
+
+    <div class="item clearfix standard_teaser">
+                <a class="foto" title="" href="https://www.blickamabend.ch/singles-des-tages/frau/sabrina-sucht-eine-offene-und-ehrliche-frau-die-immer-optimistisch-ist-id7643688.html">
+                    <img class="fl" src="TrefferMitPaging-Dateien/COM-Single-2411-SabrinaMuri-RubigenBYReneKaelin.jpg" alt="" width="140" height="140">
+                </a>
+                <div class="news-disc">
+                    <a class="news-links" href="https://www.blickamabend.ch/singles-des-tages/frau/sabrina-sucht-eine-offene-und-ehrliche-frau-die-immer-optimistisch-ist-id7643688.html">
+                        <strong>Sabrina sucht...</strong>
+                        <span>eine offene und ehrliche Frau, die immer optimistisch ist</span>
+                    </a>
+                    <div class="teaserInfo">
+                <span class="time firstItem">24.11.2017</span>
+                        <span class="reactions ">0&nbsp;Reax</span>
+                        </div>
+		<a class="all-gallery" href="http://www.blickamabend.ch/singles-des-tages/frau/" title="Mehr Frau">
+                        Mehr Frau</a>
+                    </div>
+            </div>
+        <div class="item clearfix standard_teaser">
+                <a class="foto" title="" href="https://www.blickamabend.ch/singles-des-tages/mann/nalliah-sucht-eine-nette-frau-die-auch-mal-spontan-sein-kann-id7639525.html">
+                    <img class="fl" src="TrefferMitPaging-Dateien/COM-Single-2311-Nalliah.jpg" alt="" width="140" height="140">
+                </a>
+                <div class="news-disc">
+                    <a class="news-links" href="https://www.blickamabend.ch/singles-des-tages/mann/nalliah-sucht-eine-nette-frau-die-auch-mal-spontan-sein-kann-id7639525.html">
+                        <strong>Nalliah sucht ...</strong>
+                        <span>eine nette Frau, die auch mal spontan sein kann</span>
+                    </a>
+                    <div class="teaserInfo">
+                <span class="time firstItem">23.11.2017</span>
+                        <span class="reactions ">0&nbsp;Reax</span>
+                        </div>
+		<a class="all-gallery" href="http://www.blickamabend.ch/singles-des-tages/mann/" title="Mehr Mann">
+                        Mehr Mann</a>
+                    </div>
+            </div>
+        <div class="item clearfix standard_teaser">
+                <a class="foto" title="" href="https://www.blickamabend.ch/singles-des-tages/frau/saskia-sucht-einen-ehrlichen-mann-mit-einem-guten-humor-id7639515.html">
+                    <img class="fl" src="TrefferMitPaging-Dateien/COM-Single-2311-Saskia.jpg" alt="" width="140" height="140">
+                </a>
+                <div class="news-disc">
+                    <a class="news-links" href="https://www.blickamabend.ch/singles-des-tages/frau/saskia-sucht-einen-ehrlichen-mann-mit-einem-guten-humor-id7639515.html">
+                        <strong>Saskia sucht ...</strong>
+                        <span>einen ehrlichen Mann mit einem guten Humor</span>
+                    </a>
+                    <div class="teaserInfo">
+                <span class="time firstItem">23.11.2017</span>
+                        <span class="reactions ">0&nbsp;Reax</span>
+                        </div>
+		<a class="all-gallery" href="http://www.blickamabend.ch/singles-des-tages/frau/" title="Mehr Frau">
+                        Mehr Frau</a>
+                    </div>
+            </div>
+        <div class="item clearfix standard_teaser">
+                <a class="foto" title="" href="https://www.blickamabend.ch/singles-des-tages/mann/yanis-sucht-eine-sportliche-frau-die-so-gefuehlvoll-ist-wie-ich-id7634793.html">
+                    <img class="fl" src="TrefferMitPaging-Dateien/COM-Single-2211-Yanis.jpg" alt="" width="140" height="140">
+                </a>
+                <div class="news-disc">
+                    <a class="news-links" href="https://www.blickamabend.ch/singles-des-tages/mann/yanis-sucht-eine-sportliche-frau-die-so-gefuehlvoll-ist-wie-ich-id7634793.html">
+                        <strong>Yanis sucht...</strong>
+                        <span>eine sportliche Frau, die so gefühlvoll ist wie ich</span>
+                    </a>
+                    <div class="teaserInfo">
+                <span class="time firstItem">22.11.2017</span>
+                        <span class="reactions ">0&nbsp;Reax</span>
+                        </div>
+		<a class="all-gallery" href="http://www.blickamabend.ch/singles-des-tages/mann/" title="Mehr Mann">
+                        Mehr Mann</a>
+                    </div>
+            </div>
+        <div class="item clearfix standard_teaser">
+                <a class="foto" title="" href="https://www.blickamabend.ch/singles-des-tages/mann/yves-sucht-eine-vertrauenswuerdige-und-respektvolle-frau-id7580504.html">
+                    <img class="fl" src="TrefferMitPaging-Dateien/COM-Single-1011-YvesLombard-ZuerichBYReneKaelin.jpg" alt="" width="140" height="140">
+                </a>
+                <div class="news-disc">
+                    <a class="news-links" href="https://www.blickamabend.ch/singles-des-tages/mann/yves-sucht-eine-vertrauenswuerdige-und-respektvolle-frau-id7580504.html">
+                        <strong>Yves sucht...</strong>
+                        <span>eine vertrauenswürdige und respektvolle Frau.</span>
+                    </a>
+                    <div class="teaserInfo">
+                <span class="time firstItem">10.11.2017</span>
+                        <span class="reactions ">0&nbsp;Reax</span>
+                        </div>
+		<a class="all-gallery" href="http://www.blickamabend.ch/singles-des-tages/mann/" title="Mehr Mann">
+                        Mehr Mann</a>
+                    </div>
+            </div>
+        <div class="item clearfix standard_teaser">
+                <a class="foto" title="" href="https://www.blickamabend.ch/singles-des-tages/frau/laura-sucht-einen-lustigen-und-netten-mann-id7580495.html">
+                    <img class="fl" src="TrefferMitPaging-Dateien/COM-Single-1011-Laura.jpg" alt="" width="140" height="140">
+                </a>
+                <div class="news-disc">
+                    <a class="news-links" href="https://www.blickamabend.ch/singles-des-tages/frau/laura-sucht-einen-lustigen-und-netten-mann-id7580495.html">
+                        <strong>Laura sucht...</strong>
+                        <span>einen lustigen und netten Mann.</span>
+                    </a>
+                    <div class="teaserInfo">
+                <span class="time firstItem">10.11.2017</span>
+                        <span class="reactions ">0&nbsp;Reax</span>
+                        </div>
+		<a class="all-gallery" href="http://www.blickamabend.ch/singles-des-tages/frau/" title="Mehr Frau">
+                        Mehr Frau</a>
+                    </div>
+            </div>
+        <div class="item clearfix standard_teaser">
+                <a class="foto" title="" href="https://www.blickamabend.ch/singles-des-tages/mann/mischel-sucht-eine-treue-frau-die-spontan-sein-kann-id7627684.html">
+                    <img class="fl" src="TrefferMitPaging-Dateien/COM-Single-2111-Mischel.jpg" alt="" width="140" height="140">
+                </a>
+                <div class="news-disc">
+                    <a class="news-links" href="https://www.blickamabend.ch/singles-des-tages/mann/mischel-sucht-eine-treue-frau-die-spontan-sein-kann-id7627684.html">
+                        <strong>Mischel sucht...</strong>
+                        <span>eine treue Frau, die spontan sein kann</span>
+                    </a>
+                    <div class="teaserInfo">
+                <span class="time firstItem">21.11.2017</span>
+                        <span class="reactions ">0&nbsp;Reax</span>
+                        </div>
+		<a class="all-gallery" href="http://www.blickamabend.ch/singles-des-tages/mann/" title="Mehr Mann">
+                        Mehr Mann</a>
+                    </div>
+            </div>
+        <div class="item clearfix standard_teaser">
+                <a class="foto" title="" href="https://www.blickamabend.ch/singles-des-tages/frau/nadia-sucht-einen-grosszuegigen-toleranten-und-weltoffenen-mann-id7570059.html">
+                    <img class="fl" src="TrefferMitPaging-Dateien/COM-Single-0811-Nadia.jpg" alt="" width="140" height="140">
+                </a>
+                <div class="news-disc">
+                    <a class="news-links" href="https://www.blickamabend.ch/singles-des-tages/frau/nadia-sucht-einen-grosszuegigen-toleranten-und-weltoffenen-mann-id7570059.html">
+                        <strong>Nadia sucht...</strong>
+                        <span>einen grosszügigen, toleranten und weltoffenen Mann.</span>
+                    </a>
+                    <div class="teaserInfo">
+                <span class="time firstItem">08.11.2017</span>
+                        <span class="reactions ">0&nbsp;Reax</span>
+                        </div>
+		<a class="all-gallery" href="http://www.blickamabend.ch/singles-des-tages/frau/" title="Mehr Frau">
+                        Mehr Frau</a>
+                    </div>
+            </div>
+        <div class="item clearfix standard_teaser">
+                <a class="foto" title="" href="https://www.blickamabend.ch/singles-des-tages/frau/sara-sucht-einen-mann-der-treu-und-ehrlich-ist-id7622241.html">
+                    <img class="fl" src="TrefferMitPaging-Dateien/COM-Single-2011-Sara.jpg" alt="" width="140" height="140">
+                </a>
+                <div class="news-disc">
+                    <a class="news-links" href="https://www.blickamabend.ch/singles-des-tages/frau/sara-sucht-einen-mann-der-treu-und-ehrlich-ist-id7622241.html">
+                        <strong>Sara sucht...</strong>
+                        <span>einen Mann, der treu und ehrlich ist</span>
+                    </a>
+                    <div class="teaserInfo">
+                <span class="time firstItem">20.11.2017</span>
+                        <span class="reactions ">0&nbsp;Reax</span>
+                        </div>
+		<a class="all-gallery" href="http://www.blickamabend.ch/singles-des-tages/frau/" title="Mehr Frau">
+                        Mehr Frau</a>
+                    </div>
+            </div>
+        <div class="item clearfix standard_teaser">
+                <a class="foto" title="" href="https://www.blickamabend.ch/singles-des-tages/mann/diogo-sucht-eine-frau-die-eine-gute-persoenlichkeit-hat-id7450594.html">
+                    <img class="fl" src="TrefferMitPaging-Dateien/COM-Single-1210-Diogo.jpg" alt="" width="140" height="140">
+                </a>
+                <div class="news-disc">
+                    <a class="news-links" href="https://www.blickamabend.ch/singles-des-tages/mann/diogo-sucht-eine-frau-die-eine-gute-persoenlichkeit-hat-id7450594.html">
+                        <strong>Diogo sucht...</strong>
+                        <span>eine Frau, die eine gute Persönlichkeit hat</span>
+                    </a>
+                    <div class="teaserInfo">
+                <span class="time firstItem">12.10.2017</span>
+                        <span class="reactions ">0&nbsp;Reax</span>
+                        </div>
+		<a class="all-gallery" href="http://www.blickamabend.ch/singles-des-tages/mann/" title="Mehr Mann">
+                        Mehr Mann</a>
+                    </div>
+            </div>
+        <div class="search-pagination-wrapper">
+        <div class="search-pagination">
+            <a href="https://www.blickamabend.ch/suche/?q=single%20tages&amp;sort=&amp;start=190">
+                <span class="previous"><span>«</span></span>
+                </a>
+            <span class="page">Seite</span>
+            <a href="https://www.blickamabend.ch/suche/?q=single%20tages&amp;sort=&amp;start=150"><span><span>16</span></span></a>
+                    <a href="https://www.blickamabend.ch/suche/?q=single%20tages&amp;sort=&amp;start=160"><span><span>17</span></span></a>
+                    <a href="https://www.blickamabend.ch/suche/?q=single%20tages&amp;sort=&amp;start=170"><span><span>18</span></span></a>
+                    <a href="https://www.blickamabend.ch/suche/?q=single%20tages&amp;sort=&amp;start=180"><span><span>19</span></span></a>
+                    <a href="https://www.blickamabend.ch/suche/?q=single%20tages&amp;sort=&amp;start=190"><span><span>20</span></span></a>
+                    <span class="active"><span class="cf091a">21</span></span>
+                    <a href="https://www.blickamabend.ch/suche/?q=single%20tages&amp;sort=&amp;start=210"><span><span>22</span></span></a>
+                    <a href="https://www.blickamabend.ch/suche/?q=single%20tages&amp;sort=&amp;start=220"><span><span>23</span></span></a>
+                    <a href="https://www.blickamabend.ch/suche/?q=single%20tages&amp;sort=&amp;start=230"><span><span>24</span></span></a>
+                    <a href="https://www.blickamabend.ch/suche/?q=single%20tages&amp;sort=&amp;start=240"><span><span>25</span></span></a>
+                    <a href="https://www.blickamabend.ch/suche/?q=single%20tages&amp;sort=&amp;start=250"><span><span>26</span></span></a>
+                    <span class="next"><span>»</span></span>
+                </div>
+        <a href="#top" title="" class="top"><span class="more"></span></a>
+    </div>
+
+</div><h3 class="module_title clearfix ">
+            <span class="h3_title">
+                	Unsere Leser empfehlen</span>
+            </h3>
+    <div class="widget_maxiteaser topteaser various-news  ">
+            <div class="clearfix">
+                <div class="item  clearfix standard_teaser">
+                            <a title="Ist das noch Kunst oder schon ein Verbrechen? 12 schrecklich peinliche Frisuren" href="https://www.blickamabend.ch/very-best-of/ist-das-noch-kunst-oder-schon-ein-verbrechen-12-schrecklich-peinliche-frisuren-id3388299.html" class="news-img">
+                                <img src="TrefferMitPaging-Dateien/ridiculous-haircuts-people-actually-paid-for-645502420-dec-2.jpg" alt="Ist das noch Kunst oder schon ein Verbrechen? 12 schrecklich peinliche Frisuren" style="width: 308px;" height="173">
+                                </a>
+                            <a class="news-links" href="https://www.blickamabend.ch/very-best-of/ist-das-noch-kunst-oder-schon-ein-verbrechen-12-schrecklich-peinliche-frisuren-id3388299.html" title="Ist das noch Kunst oder schon ein Verbrechen? 12 schrecklich peinliche Frisuren">
+                                <strong>Ist das noch Kunst oder schon ein Verbrechen? </strong><span>12 schrecklich peinliche Frisuren</span>
+                            </a>
+                            <div class="clearfix">
+								<div class="teaserInfo">
+                </div>
+		</div>
+                            </div>
+                    <div class="item  clearfix standard_teaser last lastgrid">
+                            <a title="Sport-Tagesticker: Scharapowas Krise hält auch auf Sand an" href="https://www.blickamabend.ch/sport/sport-tagesticker-id5539965.html" class="news-img">
+                                <img src="TrefferMitPaging-Dateien/imago-sp-0424-16530014-34370289.jpg" alt="Sport-Tagesticker: Scharapowas Krise hält auch auf Sand an" style="width: 308px;" height="173">
+                                </a>
+                            <a class="news-links" href="https://www.blickamabend.ch/sport/sport-tagesticker-id5539965.html" title="Sport-Tagesticker: Scharapowas Krise hält auch auf Sand an">
+                                <strong>Sport-Tagesticker </strong><span>Scharapowas Krise hält auch auf Sand an</span>
+                            </a>
+                            <div class="clearfix">
+								<div class="teaserInfo">
+                </div>
+		</div>
+                            </div>
+                    <div class="clear"></div>
+					</div>
+        </div>
+    <h3 class="module_title clearfix ">
+            <span class="h3_title">
+                	Meist gelesen</span>
+            </h3>
+    <div class="widget_maxiteaser topteaser various-news  ">
+            <div class="clearfix">
+                <div class="item  clearfix standard_teaser">
+                            <a title="Augen auf! 10 gefakte Bilder, die viral gingen" href="https://www.blickamabend.ch/very-best-of/augen-auf-10-gefakte-bilder-die-viral-gingen-id6199658.html" class="news-img">
+                                <img src="TrefferMitPaging-Dateien/maxresdefault.jpg" alt="Augen auf! 10 gefakte Bilder, die viral gingen" style="width: 308px;" height="173">
+                                </a>
+                            <a class="news-links" href="https://www.blickamabend.ch/very-best-of/augen-auf-10-gefakte-bilder-die-viral-gingen-id6199658.html" title="Augen auf! 10 gefakte Bilder, die viral gingen">
+                                <strong>Augen auf! </strong><span>10 gefakte Bilder, die viral gingen</span>
+                            </a>
+                            <div class="clearfix">
+								<div class="teaserInfo">
+                </div>
+		</div>
+                            </div>
+                    <div class="item  clearfix standard_teaser last lastgrid">
+                            <a title="Schnell eskaliert: 13 Situationen, die ausser Kontrolle geraten sind" href="https://www.blickamabend.ch/very-best-of/schnell-eskaliert-13-situationen-die-ausser-kontrolle-geraten-sind-id4843067.html" class="news-img">
+                                <img src="TrefferMitPaging-Dateien/blickteasereskalation.jpg" alt="Schnell eskaliert: 13 Situationen, die ausser Kontrolle geraten sind" style="width: 308px;" height="173">
+                                </a>
+                            <a class="news-links" href="https://www.blickamabend.ch/very-best-of/schnell-eskaliert-13-situationen-die-ausser-kontrolle-geraten-sind-id4843067.html" title="Schnell eskaliert: 13 Situationen, die ausser Kontrolle geraten sind">
+                                <strong>Schnell eskaliert </strong><span>13 Situationen, die ausser Kontrolle geraten sind</span>
+                            </a>
+                            <div class="clearfix">
+								<div class="teaserInfo">
+                </div>
+		</div>
+                            </div>
+                    <div class="clear"></div>
+					</div>
+        </div>
+    </div>
+<div class="grid_6 rightElement"><!--googleoff: index--><h3 class="module_title clearfix"><span class="h3_title">Social Stream</span></h3>
+		
+		<div class="fblb socialStream"><fb:like-box href="https://www.facebook.com/blickamabend" colorscheme="light" show_faces="true" header="false" stream="true" show_border="false" class=" fb_iframe_widget" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=1461265510767149&amp;color_scheme=light&amp;container_width=0&amp;header=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fblickamabend&amp;locale=de_DE&amp;sdk=joey&amp;show_border=false&amp;show_faces=true&amp;stream=true"><span style="vertical-align: bottom; width: 300px; height: 540px;"><iframe name="f1b58fdd9323762" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" title="fb:like_box Facebook Social Plugin" style="border: medium none; visibility: visible; width: 300px; height: 540px;" src="TrefferMitPaging-Dateien/like_box.html" class="" frameborder="0" width="1000px" height="1000px"></iframe></span></fb:like-box></div>
+		<br>
+		
+		<iframe id="twitter-widget-0" scrolling="no" allowtransparency="true" allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: static; visibility: visible; display: inline-block; width: 520px; height: 250px; padding: 0px; border: medium none; max-width: 100%; min-width: 180px; margin-top: 0px; margin-bottom: 0px; min-height: 200px;" data-widget-id="399912374083149824" title="Twitter Timeline" frameborder="0"></iframe>
+		<div class="vspace"></div>
+	<!--googleon: index--></div>
+<div class="clear"></div></div>
+    </div>
+</div>
+
+<div id="footer_outer">
+    <div id="footer">
+        <script async="async" data-client-id="DBJAmwVgVdWzHRh" type="text/javascript" src="TrefferMitPaging-Dateien/khp.js"></script><style>
+    .arrowup.arrowup-side a img {
+        cursor: pointer;
+        display: block;
+        position: fixed;
+        bottom: 46%;
+        right: 20px;
+        width: 63px;
+        height: 44px;
+    }
+</style>
+<div class="arrowup arrowup-side"><a href="#"><img alt="^" src="TrefferMitPaging-Dateien/up_arrow_002.png"></a></div>
+<div class="container_18 widget_footer">
+            <div class="footer_logo">
+                <a href="https://www.blickamabend.ch/"><img alt="Blick am Abend" src="TrefferMitPaging-Dateien/logo_footer.png" width="66" height="53"></a>
+            </div>
+            <ul>
+                <li><a href="https://www.blickamabend.ch/impressum/">Impressum | Kontakt</a></li>
+                <li><a href="https://www.blickamabend.ch/services/faq-haeufig-gestellte-fragen-id2542544.html">FAQ</a></li>
+                <li><a href="https://www.blickamabend.ch/services/datenschutz/">Datenschutz</a></li>
+                <li><a href="https://www.blickamabend.ch/services/agb/">AGB</a></li>
+                <li><a href="http://www.admeira.ch/brands/digital/blickamabend-ch">Hier werben</a></li>
+                <li><a href="https://www.blickamabend.ch/services/newsletter-anmeldung/">Newsletter</a></li>
+                <li><a href="https://reader.ringier.ch/blick-am-abend">ePaper</a></li>
+                <li><a href="https://www.blickamabend.ch/services/blick-am-abend-apps-fuer-android-iphone-und-ipad-alle-wirklich-unterhaltsamen-storys-auf-deinem-smartphone-id2570974.html">Apps</a></li>
+            </ul>
+            <div class="copyright">© <span id="year">2018</span> Blick am Abend</div>
+            <div class="arrowup"><a href="#"><img alt="^" src="TrefferMitPaging-Dateien/up_arrow.png" width="63" height="44"></a></div>
+        </div>
+<script>
+    var n = new Date().getFullYear();
+    document.getElementById("year").innerHTML = n;
+</script><div id="cX-root" style="display:none"></div>
+<script type="text/javascript">
+    function getQueryVariable(variable)
+    {
+        var query = window.location.search.substring(1);
+        var vars = query.split('&');
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split('=');
+            if(pair[0] == variable){return pair[1];}
+        }
+        return(false);
+    }
+    if(getQueryVariable('token') === false){
+        var cX = cX || {}; cX.callQueue = cX.callQueue || [];
+        cX.callQueue.push(['setSiteId', '9222332394696463889']);
+        if (getQueryVariable('nlsub') != false  && /\S+@\S+/.test(getQueryVariable('nlsub'))) {
+            cX.callQueue.push(['addExternalId', {'id': $().crypt({method: 'md5', source: getQueryVariable('nlsub').toLowerCase()}), 'type': 'rag'}]);
+        } else if (getQueryVariable('nlsubid') != false) {
+            cX.callQueue.push(['addExternalId', {'id': getQueryVariable('nlsubid'), 'type': 'rag'}]);
+        }
+        cX.callQueue.push(['sendPageViewEvent']);
+    }
+</script>
+<script type="text/javascript">
+    if(getQueryVariable('token') === false){
+        (function() { try { var scriptEl = document.createElement('script'); scriptEl.type = 'text/javascript'; scriptEl.async = 'async';
+            scriptEl.src = ('https:' == document.location.protocol) ? 'https://scdn.cxense.com/cx.js' : 'http://cdn.cxense.com/cx.js';
+            var targetEl = document.getElementsByTagName('script')[0]; targetEl.parentNode.insertBefore(scriptEl, targetEl); } catch (e) {};} ());
+    }
+</script><!-- Adform Tracking Code BEGIN -->
+
+<!-- Point: "Blick am Abend Landingpage (Landing Page)" (Blick am Abend/) -->
+
+<!-- URL: www.blickamabend.ch -->
+
+<script type="text/javascript">
+
+var _adftrack = {
+
+    pm: 106794,
+
+    id: 4078959
+
+};
+
+(function(){var s=document.createElement('script');s.type='text/javascript';s.async=true;s.src='https://track.adform.net/serving/scripts/trackpoint/async/';var x = document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);})();
+
+</script>
+
+<noscript>
+
+    <p style="margin:0;padding:0;border:0;">
+
+        <img src="https://track.adform.net/Serving/TrackPoint/?pm=106794&amp;lid=4078959" width="1" height="1" alt="" />
+
+    </p>
+
+</noscript>
+
+<!-- Adform Tracking Code END --><!-- SZMFRABO VERSION="1.1" -->
+<script language="Javascript" type="text/javascript">
+/* <![CDATA[ */
+var szmvars="baaonl//CP//";
+/* ]]> */
+</script>
+<script language="Javascript" type="text/javascript" src="TrefferMitPaging-Dateien/survey.js"></script>
+<!-- /SZMFRABO --><!--JavaScript Tag // Tag for network 780: Swiss Adserver - Ringier // Website: Blickamabend.ch // Page: Pixel für Umfragen // Placement: Web (5244666) // created at: Sep 19, 2014 10:37:08 AM-->
+<script language="javascript">
+<!--
+if (window.adgroupid == undefined) {
+ window.adgroupid = Math.round(Math.random() * 1000);
+}
+document.write('<scr'+'ipt language="javascript1.1" src="https://secserv.adtech.de/addyn|3.0|780|5244666|0|16|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp='+window.adgroupid+';misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</script><script language="javascript1.1" src="TrefferMitPaging-Dateien/addyn3.0%7C780%7C5244666%7C0%7C16%7CADTECH%3bloc=10"></script><img src="TrefferMitPaging-Dateien/1x1.gif" alt="" title="" border="0">
+<img src="TrefferMitPaging-Dateien/custom-no-tagger.gif" style="display:none !important;"><script type="text/javascript" async="async" src="TrefferMitPaging-Dateien/mtrcs_368021.js"></script><noscript><a href="https://secserv.adtech.de/adlink|3.0|780|5244666|0|16|ADTECH;loc=300;key=key1+key2+key3+key4" target="_blank"><img src="https://adserv.adtech.de/adserv|3.0|780|5244666|0|16|ADTECH;loc=300;key=key1+key2+key3+key4" border="0" width="1" height="1"></a></noscript>
+<!-- End of JavaScript Tag --><div class="logobox" style="clear:left;float:left;width:260px;">
+    <div id="logo_ringier">
+        <a href="http://www.ringier.com/" title="Ringier">Ringier</a>
+    </div>
+</div><ul class="fl footerNav">
+        <li>
+            <strong>Ringier im Web</strong>
+        </li>
+        <li>
+            	<a title="ALPHA.ch" href="http://www.alpha.ch/" target="_blank">ALPHA.ch</a>
+                	</li>
+        <li>
+            	<a title="anibis.ch" href="http://www.anibis.ch/de/default.aspx" target="_blank">anibis.ch</a>
+                	</li>
+        <li>
+            	<a title="Autoscout24" href="http://www.autoscout24.ch/" target="_blank">Autoscout24</a>
+                	</li>
+        <li>
+            	<a title="Blick" href="http://www.blick.ch/" target="_blank">Blick</a>
+                	</li>
+        <li>
+            	<a title="Bolero (de)" href="http://www.boleromagazin.ch/" target="_blank">Bolero (de)</a>
+                	</li>
+        <li>
+            	<a title="Bolero (fr)" href="http://www.boleromagazin.ch/fr" target="_blank">Bolero (fr)</a>
+                	</li>
+        <li>
+            	<a title="Campanda" href="http://www.campanda.ch/" target="_blank">Campanda</a>
+                	</li>
+        <li>
+            	<a title="Cash" href="http://cash.ch/" target="_blank">Cash</a>
+                	</li>
+        <li>
+            	<a title="Dein Deal" href="http://www.deindeal.ch/" target="_blank">Dein Deal</a>
+                	</li>
+        <li>
+            	<a title="Geschenkidee" href="http://www.geschenkidee.ch/" target="_blank">Geschenkidee</a>
+                	</li>
+        </ul>
+<ul class="footerNav footerNav-last">
+        <li>
+            <strong></strong>
+        </li>
+        <li>
+            	<a title="Glückspost" href="http://www.glueckspost.ch/" target="_blank">Glückspost</a>
+                	</li>
+        <li>
+            	<a title="Idee cadeau" href="http://www.ideecadeau.ch/" target="_blank">Idee cadeau</a>
+                	</li>
+        <li>
+            	<a title="Il Caffé" href="http://www.caffe.ch/" target="_blank">Il Caffé</a>
+                	</li>
+        <li>
+            	<a title="Immoscout24" href="http://www.immoscout24.ch/" target="_blank">Immoscout24</a>
+                	</li>
+        <li>
+            	<a title="Infront Ringier" href="http://www.infrontringier.ch/" target="_blank">Infront Ringier</a>
+                	</li>
+        <li>
+            	<a title="Jobcloud AG" href="http://www.jobcloud.ch/" target="_blank">Jobcloud AG</a>
+                	</li>
+        <li>
+            	<a title="Jobscout24" href="http://www.jobscout24.ch/" target="_blank">Jobscout24</a>
+                	</li>
+        <li>
+            	<a title="Jobs.ch" href="http://www.jobs.ch/" target="_blank">Jobs.ch</a>
+                	</li>
+        <li>
+            	<a title="jobup.ch" href="http://www.jobup.ch/" target="_blank">jobup.ch</a>
+                	</li>
+        <li>
+            	<a title="LandLiebeTV" href="http://www.landliebetv.ch%C2%A0" target="_blank">LandLiebeTV</a>
+                	</li>
+        </ul>
+<ul class="footerNav footerNav-last">
+        <li>
+            <strong></strong>
+        </li>
+        <li>
+            	<a title="l'Illustré" href="http://www.illustre.ch/" target="_blank">l'Illustré</a>
+                	</li>
+        <li>
+            	<a title="Onlinekiosk" href="http://www.online-kiosk.ch/" target="_blank">Onlinekiosk</a>
+                	</li>
+        <li>
+            	<a title="Pixobello24" href="http://pixobello24.ch/" target="_blank">Pixobello24</a>
+                	</li>
+        <li>
+            	<a title="Radio Energy Basel" href="https://www.energy.ch/radio/basel/" target="_blank">Radio Energy Basel</a>
+                	</li>
+        <li>
+            	<a title="Radio Energy Bern" href="https://www.energy.ch/radio/bern/" target="_blank">Radio Energy Bern</a>
+                	</li>
+        <li>
+            	<a title="Radio Energy Zürich" href="https://www.energy.ch/" target="_blank">Radio Energy Zürich</a>
+                	</li>
+        <li>
+            	<a title="Sat.1 Schweiz" href="http://www.sat1.ch/" target="_blank">Sat.1 Schweiz</a>
+                	</li>
+        <li>
+            	<a title="Schweizer Illustrierte" href="http://www.schweizer-illustrierte.ch/" target="_blank">Schweizer Illustrierte</a>
+                	</li>
+        </ul>
+<ul class="footerNav footerNav-last">
+        <li>
+            <strong></strong>
+        </li>
+        <li>
+            	<a title="Scout24" href="http://www.scout24.ch/" target="_blank">Scout24</a>
+                	</li>
+        <li>
+            	<a title="SI Style" href="http://www.sistyle.ch/" target="_blank">SI Style</a>
+                	</li>
+        <li>
+            	<a title="The Classical Company" href="http://www.classicalcompany.ch/" target="_blank">The Classical Company</a>
+                	</li>
+        <li>
+            	<a title="Ticketcorner" href="http://www.ticketcorner.ch/" target="_blank">Ticketcorner</a>
+                	</li>
+        <li>
+            	<a title="Topjobs" href="http://www.topjobs.ch/" target="_blank">Topjobs</a>
+                	</li>
+        <li>
+            	<a title="TV8" href="http://www.tv8.ch/" target="_blank">TV8</a>
+                	</li>
+        <li>
+            	<a title="Verkaufen.ch" href="http://www.verkaufen.ch/" target="_blank">Verkaufen.ch</a>
+                	</li>
+        </ul>
+</div>
+</div><div id="GoogleAdsense" style="display: block; width: 1px; height: 1px;"></div><script type="text/javascript" id="">$(document).ready(function(){$("fb\\:share-button").click(function(){dataLayer.push({event:"facebookAction",socialActionType:"share",socialTargetUrl:window.location.pathname})});window.focus();addEventListener("blur",function(){try{var a=$("iframe[title^\x3dfb:share_button]");for(i=0;i<a.length;i++)document.activeElement===a[i]&&dataLayer.push({event:"facebookAction",socialActionType:"share",socialTargetUrl:window.location.pathname});var b=$('iframe[src^\x3d"//www.facebook.com/plugins/like.php"]');
+for(i=0;i<b.length;i++)document.activeElement===b[i]&&dataLayer.push({event:"facebookAction",socialActionType:"like",socialTargetUrl:window.location.pathname})}catch(c){}})});</script><script type="text/javascript" id="">var checkTwttrObjectExist=setInterval(function(){if("undefined"!==typeof twttr){try{twttr.events.bind("tweet",function(a){dataLayer.push({event:"twitterAction",socialActionType:"tweet",socialTargetUrl:window.location.pathname})}),twttr.events.bind("follow",function(a){dataLayer.push({event:"twitterAction",socialActionType:"follow",socialTargetUrl:window.location.pathname})})}catch(a){console.log("Error on Twitter tracking setup ("+a+")")}clearInterval(checkTwttrObjectExist)}},500);</script><script type="text/javascript" id="">function _get_window_height(){return window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight||0}function _get_window_Yscroll(){return window.pageYOffset||document.body.scrollTop||document.documentElement.scrollTop||0}
+function _get_doc_height(){return Math.max(document.body.scrollHeight||0,document.documentElement.scrollHeight||0,document.body.offsetHeight||0,document.documentElement.offsetHeight||0,document.body.clientHeight||0,document.documentElement.clientHeight||0)}function _get_scroll_percentage(){return(_get_window_Yscroll()+_get_window_height())/_get_doc_height()*100}
+function _update_max_scroll_percentage_level(){var a=_get_scroll_percentage(),a=100==a?100:90<=a?90:80<=a?80:70<=a?70:60<=a?60:50<=a?50:40<=a?40:30<=a?30:20<=a?20:10<=a?10:0;a>window.nbMaxScrollPercentage&&(window.nbMaxScrollPercentage=a,document.cookie="nbScrollPercentage\x3d"+window.nbMaxScrollPercentage+"; path\x3d/")}
+try{window.onload=function(){window.nbMaxScrollPercentage=0;document.cookie="nbScrollLocation\x3d"+escape(window.location.pathname)+"; path\x3d/";setInterval(function(){_update_max_scroll_percentage_level()},500)}}catch(e$$4){};</script><iframe style="position: absolute; border: 0px none; width: 0px; height: 0px;" src="TrefferMitPaging-Dateien/a_002.html"></iframe>
+
+<img class="statspixel" src="TrefferMitPaging-Dateien/a.asc" alt="" width="1" height="1">
+<script type="text/javascript">function isArticle(url) {
+            if (typeof url !== 'undefined') {
+                var patt = /id(\d{7,9})\.html/g;
+                var match = patt.exec(url);
+                return(match ? match[1] : false);
+            }
+            return false;
+        };
+
+        (function protectFormFromDirectAccess () {
+        
+            if(isArticle(location.href) == 3622899)
+            {
+                if(getCookie('game3636808') != 'gameDoneFormSubmit')
+                {
+                    console.log('Illegal access on form detected - redirecting to Frontpage');
+                    location.href='/';
+                }
+            }
+        })();
+
+    
+
+
+            function initGame()
+            {
+                var bStartGame=getParamForGame('startSBBGame');
+                var clickCount= parseInt(getCookie('game3636808'))>=0 ? parseInt(getCookie('game3636808')):0;
+                var clickCountRequired= parseInt(getCookie('gameClicksNeeded3636808'))>=0 ? parseInt(getCookie('gameClicksNeeded3636808')):0;
+
+                
+                if(bStartGame == 'true' && clickCount==0)
+                {
+                    $('#searchItemGame').addClass('addBlock');
+                    setTimeout(function(){ $('#searchItemGame').addClass('fadeIn');}, 500);
+                    
+
+                    if(typeof jQuery().fastClick !== 'undefined')
+                    {
+                        $('a.boxcloseGame','#searchItemGame').fastClick(function(e){
+                            e.stopPropagation();
+                            e.preventDefault();
+                            $('#searchItemGame').removeClass('fadeIn');
+                            setTimeout(function(){ $('#searchItemGame').remove(); }, 1000);
+                        });
+
+                        $('a.submit4Game','#searchItemGame').fastClick(function(e){
+                            e.stopPropagation();
+                            e.preventDefault();
+                            var getRandomClicksNeeded=getRandomizer(1,5);
+
+                            
+                            setCookie('game3636808', 1, '60m', document.domain);
+                            setCookie('gameClicksNeeded3636808', getRandomClicksNeeded, '60m', document.domain);
+
+                            $('#searchItemGame').removeClass('fadeIn');
+                            setTimeout(function(){ $('#searchItemGame').remove(); }, 1000);
+                        });
+                    }
+                    else
+                    {
+                        
+
+                        $('a.boxcloseGame','#searchItemGame').click(function(e){
+                            e.stopPropagation();
+                            e.preventDefault();
+                            $('#searchItemGame').removeClass('fadeIn');
+                            setTimeout(function(){ $('#searchItemGame').remove(); }, 1000);
+                        });
+
+                        $('a.submit4Game','#searchItemGame').click(function(e){
+                            e.stopPropagation();
+                            e.preventDefault();
+
+                            var getRandomClicksNeeded=getRandomizer(1,5);
+                            
+                            setCookie('game3636808', 1, '60m', document.domain);
+                            setCookie('gameClicksNeeded3636808', getRandomClicksNeeded, '60m', document.domain);
+                            $('#searchItemGame').removeClass('fadeIn');
+                            setTimeout(function(){ $('#searchItemGame').remove(); }, 1000);
+                        });
+                    }
+
+                }
+                else if(clickCount != '')
+                {
+                    clickCount++;
+
+                    if(clickCount>clickCountRequired)
+                    {
+                        if(typeof jQuery().fastClick !== 'undefined')
+                        {
+                            $('a.boxcloseGame','#searchItemGameFound').fastClick(function(e){
+                                e.stopPropagation();
+                                e.preventDefault();
+                                $('#searchItemGameFound').removeClass('fadeIn');
+                                setTimeout(function(){ $('#searchItemGameFound').remove(); }, 1000);
+                            });
+
+                            $('a.submit4Game','#searchItemGameFound').fastClick(function(e){
+                                e.stopPropagation();
+                                e.preventDefault();
+                                location.href='https://www.blickamabend.ch/sbb-wifi-win-herzliche-gratulation-du-nimmst-am-gewinnspiel-teil-id3622899.html';
+                            });
+                        }
+                        else
+                        {
+                            
+                            $('a.boxcloseGame','#searchItemGameFound').click(function(e){
+                                e.stopPropagation();
+                                e.preventDefault();
+                                $('#searchItemGameFound').removeClass('fadeIn');
+                                setTimeout(function(){ $('#searchItemGameFound').remove(); }, 1000);
+                            });
+
+                            $('a.submit4Game','#searchItemGameFound').click(function(e){
+                                e.stopPropagation();
+                                e.preventDefault();
+                                location.href='https://www.blickamabend.ch/sbb-wifi-win-herzliche-gratulation-du-nimmst-am-gewinnspiel-teil-id3622899.html';
+                            });
+
+                        }
+                        $('#searchItemGameFound').addClass('addBlock');
+                        setTimeout(function(){ $('#searchItemGameFound').addClass('fadeIn');}, 500);
+                        setCookie('game3636808', 'gameDoneFormSubmit', '60m', document.domain);
+                    }
+                    else
+                    {
+                        setCookie('game3636808', clickCount, '60m', document.domain);
+                    }
+                }
+                
+            }
+
+            function getParamForGame(name) {
+                var result = RegExp("(&|\\?)" + name + "=(.+?)(&|$)").exec(location.search);
+                return result ? decodeURIComponent(result[2]) : "";
+            }
+
+            function getRandomizer(bottom, top) {
+                return Math.floor( Math.random() * ( 1 + top - bottom ) ) + bottom;
+            }
+
+            function isArticle(url) {
+                if (typeof url !== 'undefined') {
+                var patt = /id(\d{7,9})\.html/g;
+                var match = patt.exec(url);
+                return(match ? match[1] : false);
+                }
+                return false;
+            };
+
+            $(document).ready(function() {
+                initGame();
+            });</script>
+<script type="text/javascript">
+    
+        twttr.ready(function (twttr) {
+            $('.tw').removeClass('hidden');
+            /*twttr.events.bind('click', function (event) {
+             console.log('twitter clicked');
+             });*/
+            twttr.events.bind('tweet', function (event) {
+                trackLike("", "twitter");
+            });
+        });
+    </script>
+
+<script type="text/javascript">
+    if (typeof ADTECH != 'undefined' && ADTECH.executeQueue) {
+        ADTECH.executeQueue();
+    }
+</script>
+
+<div style="display: none; visibility: hidden;"><script type="text/javascript">var _sf_startpt=(new Date).getTime();</script>
+
+<script type="text/javascript">var cb_author="blick am abend | 0",cb_authorname="blick am abend",cb_authorid="0",cb_isArticle=!0;!1!==google_tag_manager["GTM-PS2PDM"].macro('gtm26')&&(cb_authorid=google_tag_manager["GTM-PS2PDM"].macro('gtm29'));
+if(!1!==google_tag_manager["GTM-PS2PDM"].macro('gtm30'))if(cb_isArticle=!1,null!=document.querySelector(".widget_author a"))cb_author=document.querySelector(".widget_author a").getAttribute("title")+" | "+cb_authorid;else if(null!=document.querySelector(".widget_author div"))cb_author=document.querySelector(".widget_author div").getAttribute("title")+" | "+cb_authorid;else{var cb_author=cb_authorname+" | "+cb_authorid,metas=document.getElementsByTagName("meta");for(i=0;i<metas.length;i++)"author"==metas[i].name&&(cb_author=
+metas[i].content+" | "+cb_authorid)}else for(cb_author=cb_authorname+" | "+cb_authorid,metas=document.getElementsByTagName("meta"),i=0;i<metas.length;i++)"author"==metas[i].name&&(cb_author=metas[i].content+" | "+cb_authorid);var cb_section=google_tag_manager["GTM-PS2PDM"].macro('gtm31'),_sf_async_config={};cb_isArticle&&(_sf_async_config.uid=27225,_sf_async_config.domain="blickamabend.ch");_sf_async_config.useCanonical=!0;_sf_async_config.sections=cb_section;_sf_async_config.authors=cb_author;
+(function(){function b(){window._sf_endpt=(new Date).getTime();var a=document.createElement("script");a.setAttribute("language","javascript");a.setAttribute("type","text/javascript");a.setAttribute("src","//static.chartbeat.com/js/chartbeat.js");document.body.appendChild(a)}var c=window.attachEvent||window.addEventListener,d=window.attachEvent?"onload":"load";c(d,b)})();</script></div><script type="text/javascript" id="">var nmxUrl="https:\/\/baaonl-ssl.wemfbox.ch\/cgi-bin\/ivw\/CP",wemfPlatform="/website";"undefined"!=typeof google_tag_manager["GTM-PS2PDM"].macro('gtm36')&&"/mobilesite"==google_tag_manager["GTM-PS2PDM"].macro('gtm38')&&(wemfPlatform="/mobilesite");if(1<google_tag_manager["GTM-PS2PDM"].macro('gtm39').length||"undefined"!=typeof google_tag_manager["GTM-PS2PDM"].macro('gtm40')||0!=google_tag_manager["GTM-PS2PDM"].macro('gtm41')){var wemfsrc=nmxUrl+wemfPlatform+"\/suche?r\x3d"+escape(document.referrer)+"\x26d\x3d"+1E5*Math.random()+"\x26x\x3d"+screen.width+"x"+screen.height,wemfPixel=new Image;wemfPixel.src=wemfsrc};</script>
+<noscript><img src="http://baaonl.wemfbox.ch/cgi-bin/ivw/CP/website/suche" width="1" height="1" alt=""></noscript><div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div id="loginModal"><div class="loginSheet forms"><h3 class="module_title clearfix">ANMELDUNG</h3><p class="loginText"><strong>Bitte melde dich an, um einen Kommentar abzugeben</strong></p><div class="loginError err hidden"><strong>Login-Fehler, z.B. falsche Username/Passwort-Kombination.</strong></div><div class="connect"><p><a id="tw-auth" class="buttonTW" href="https://www.blickamabend.ch/twitter/login?redirectUrl=https://www.blickamabend.ch/suche/?q=single%20tages&amp;sort=&amp;start=200"><span>Mit Twitter anmelden</span></a></p><p><a id="fb-auth" class="buttonFB"><span>Mit Facebook anmelden</span></a></p><p class="req">Wenn du ein Konto bei Facebook oder Twitter hast, kannst du dich damit anmelden.</p></div><form action="#" class="modalLogin"><div class="heightDef"><p><label for="usernameModalForm"><strong>Username/E-Mail</strong></label><br><input class="i" name="username" id="usernameModalForm" maxlength="255" type="text"></p><p><label for="passwortModalForm"><strong>Passwort</strong></label><br><input class="i" name="passwort" id="passwortModalForm" value="" maxlength="255" type="password"></p></div><div class="forms_buttons"><p><button type="submit" class="red-btn" id="login-button"><span>Einloggen »</span></button></p></div></form><p class="comm"><a href="https://www.blickamabend.ch/services/password_forgotten/">» Passwort vergessen</a><br><a href="https://www.blickamabend.ch/services/registration/" target="_blank">» Registrieren</a></p></div></div><iframe scrolling="no" allowtransparency="true" src="TrefferMitPaging-Dateien/widget_iframe.html" style="display: none;" frameborder="0"></iframe><script type="text/javascript">
+;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalRPNamespace=p.GlobalRPNamespace||[];
+    p.GlobalRPNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+    };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+    n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","//7.p.tdf.ringier.ch/rp.js","rp"));
+window.rp('newTracker', 'cf', 'in.p.tdf.ringier.ch', {
+    appId: 'blickamabend.ch',
+    cookieDomain: null,
+    contexts: {
+        gaCookies: true
+    }
+});
+
+
+// matches polyfill
+this.Element && function(ElementPrototype) {
+  ElementPrototype.matches = ElementPrototype.matches || ElementPrototype.matchesSelector || ElementPrototype.webkitMatchesSelector || ElementPrototype.msMatchesSelector
+                             || function(selector) {
+      var node = this, nodes = (node.parentNode || node.document).querySelectorAll(selector), i = -1;
+      while(nodes[++i] && nodes[i] != node);
+      return !!nodes[i];
+    }
+}(Element.prototype);
+
+// closest polyfill
+this.Element && function(ElementPrototype) {
+  ElementPrototype.closest = ElementPrototype.closest || function(selector) {
+      var el = this;
+      while(el.matches && !el.matches(selector)) el = el.parentNode;
+      return el.matches ? el : null;
+    }
+}(Element.prototype);
+
+window.rpf = {
+  abTestCookie: "",
+  userIdCookie: "",
+  viewport_elements: {},
+  viewport_lock: false,
+  viewport_bind: false,
+  viewport_interval: 250,
+  href_contentId_regex: /id(\d+)\.html/,
+  interactionTrackingEventName: 'trackStructEvent',
+  interactionTrackingCategory: 'element_interaction',
+  viewPortTrackingLabel: 'scroll_into_view',
+  clickTrackingLabel: 'click',
+  interactionTrackingKey: 'target',
+  getUrlParameterByName: function(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  },
+  insertParam: function(uri, key, value) {
+    var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+    var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+    if (uri.match(re)) {
+      return uri.replace(re, '$1' + key + "=" + value + '$2');
+    } else {
+      return uri + separator + key + "=" + value;
+    }
+  },
+  removeParam: function(key, sourceURL) {
+    var rtn = sourceURL.split("?")[0], param, params_arr = [], queryString = (sourceURL.indexOf("?") !== -1) ? sourceURL.split("?")[1] : "";
+    if (queryString !== "") {
+      params_arr = queryString.split("&");
+      for(var i = params_arr.length - 1; i >= 0; i -= 1) {
+        param = params_arr[i].split("=")[0];
+        if (param === key) {
+          params_arr.splice(i, 1);
+        }
+      }
+      rtn = rtn + "?" + params_arr.join("&");
+    }
+    return rtn;
+  },
+  addClickElement: function(el, name, func) {
+    var _self = this;
+    el.addEventListener('click', function(ev) { _self.trackClick(ev, name, func) }, false);
+  },
+  getCookieValue: function(name, cookieDelimeter) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length >= 2) {
+      var result = parts.pop().split(";").shift();
+      return result.split(cookieDelimeter);
+    } else {
+      return null;
+    }
+  },
+  trackClick: function(ev, name, targetFunc) {
+
+    var element;
+    var elements = targetFunc(ev);
+
+    if(elements instanceof Array) {
+      element = elements[0];
+    } else {
+      element = elements;
+    }
+
+    var context = (!!window.rpf.abTestCookie && window.rpf.abTestCookie.length > 0) ? [{
+      schema: "iglu:com.ringier/ab-testing/jsonschema/1-0-0",
+      data: {
+        experiment_id: window.rpf.abTestCookie[0],
+        experiment_name: window.rpf.abTestCookie[1],
+        variation: window.rpf.abTestCookie[2]
+      }
+    }] : null;
+
+    //@formatter:off
+    window.rp(
+      this.interactionTrackingEventName,
+      this.interactionTrackingCategory,
+      this.clickTrackingLabel,
+      name,
+      element.getAttribute("data-rctrk"),
+      element.getAttribute("data-contentId"),
+      context
+    );
+    //@formatter:on
+  },
+  trackInView: function(el, name, targetFunc) {
+
+    var randomString = Math.random().toString(16).slice(2);
+
+
+    var element;
+    var elements = targetFunc(el);
+
+    if(elements instanceof Array) {
+      element = elements[0];
+      var regexMatch = window.rpf.href_contentId_regex.exec( element.getAttribute("href") );
+      var contentId = regexMatch !== null ? regexMatch[1] : null;
+      elements.forEach(function(el) {
+        this.decorateElement(el, randomString, contentId);
+        this.decorateClickURL(el);
+      }.bind(this));
+    } else {
+      var regexMatch = window.rpf.href_contentId_regex.exec( elements.getAttribute("href") );
+      var contentId = regexMatch !== null ? regexMatch[1] : null;
+      this.decorateElement(elements, randomString, contentId);
+      this.decorateClickURL(elements);
+      element = elements;
+    }
+
+    var context = (!!window.rpf.abTestCookie && window.rpf.abTestCookie.length > 0) ? [{
+      schema: "iglu:com.ringier/ab-testing/jsonschema/1-0-0",
+      data: {
+        experiment_id: window.rpf.abTestCookie[0],
+        experiment_name: window.rpf.abTestCookie[1],
+        variation: window.rpf.abTestCookie[2]
+      }
+    }] : null;
+
+    //@formatter:off
+    window.rp(
+      this.interactionTrackingEventName,
+      this.interactionTrackingCategory,
+      this.viewPortTrackingLabel,
+      name,
+      element.getAttribute("data-rctrk"),
+      contentId,
+      context
+    );
+    //@formatter:on
+  },
+  decorateElement: function(el, randomString, contentId) {
+    el.setAttribute("data-rctrk", randomString);
+    el.setAttribute("data-contentId", contentId);
+  },
+  decorateClickURL: function(el) {
+    el.setAttribute("href", this.insertParam(el.getAttribute("href"), "rctrk", el.getAttribute("data-rctrk")));
+  },
+  bindViewPortListener: function() {
+    if (!this.viewport_bind) {
+      this.viewport_bind = true;
+      window.addEventListener('scroll', this.viewPortSyphon.bind(this), false);
+      window.addEventListener('resize', this.viewPortSyphon.bind(this), false);
+    }
+  },
+  processViewPortElements: function() {
+    this.viewport_lock = false;
+    var seenElements = [];
+    for(var type in this.viewport_elements) {
+      if (this.viewport_elements.hasOwnProperty(type)) {
+
+        var currentType = this.viewport_elements[type];
+
+        for(var index = 0; index < currentType.elements.length; index++) {
+          if (this.isScrolledIntoView(currentType.elements[index])) {
+            seenElements.push(index);
+            this.trackInView(currentType.elements[index], currentType.name, currentType.viewTargetFunc);
+          }
+        }
+
+        seenElements = seenElements.sort(function(a, b) { return b - a; });
+        for(var i = 0; i < seenElements.length; i++)
+          currentType.elements.splice(seenElements[i], 1);
+      }
+    }
+  },
+  viewPortSyphon: function() {
+    if (this.viewport_lock) return;
+    this.viewport_lock = true;
+    setTimeout(this.processViewPortElements.bind(this), this.viewport_interval);
+  },
+  isScrolledIntoView: function(el) { return (el.offsetParent !== null && el.getBoundingClientRect().top >= 0) && (el.getBoundingClientRect().bottom <= window.innerHeight); },
+  activateElementTracking: function(name, elements, viewTargetFunc, clickTargetFunc) {
+    var _self = this;
+    this.viewport_elements[name] = { name: name, elements: elements, viewTargetFunc: viewTargetFunc, clickTargetFunc: clickTargetFunc };
+
+    var currentElement = this.viewport_elements[name];
+    if (!!currentElement.elements) {
+      currentElement.elements.forEach(function(el) {
+        _self.addClickElement(el, name, clickTargetFunc)
+      });
+    }
+    this.bindViewPortListener();
+  },
+  nodeList2Array: function(nodeList) { return !nodeList ? null : Array.prototype.slice.call(nodeList); },
+  installTriggers: function() {
+
+      var findElements = function (selector, useCaseName, cookieName, numberOfRetries) {
+          var availableElements = window.rpf.nodeList2Array(document.querySelectorAll(selector));
+
+          if (typeof availableElements === 'undefined' || availableElements.length === 0) {
+            if (numberOfRetries > 0) {
+                setTimeout(findElements.bind(null, selector, useCaseName, cookieName, --numberOfRetries), 500);
+            }
+
+          } else {
+              window.rpf.activateElementTracking(useCaseName,
+                  availableElements,
+                  function (el) {
+                      return window.rpf.nodeList2Array(el.querySelectorAll("a"));
+                  },
+                  function (ev) {
+                      var aEle = (ev.target || ev.srcElement);
+                      return window.rpf.nodeList2Array(aEle.closest(selector).querySelectorAll("a"));
+                  });
+
+              window.rpf.abTestCookie = window.rpf.getCookieValue(cookieName, ',');
+              window.rpf.processViewPortElements();
+          }
+      };
+
+      if (location.pathname === "/") {
+          findElements(".grid_6 .rctrk", "uc4_standard", "ab_cxense_uc4", 10);
+          findElements(".grid_6 .cxtrk", "uc4_cxtrk", "ab_cxense_uc4", 10);
+      } else {
+
+        if (!!window.rpf.getUrlParameterByName("rctrk")) {
+          window.rp(window.rpf.interactionTrackingEventName,
+                    window.rpf.interactionTrackingCategory,
+                    window.rpf.clickTrackingLabel,
+                    "real_click",
+                    window.rpf.getUrlParameterByName("rctrk"),
+                    document.getElementsByName('contentId').length > 0 ? document.getElementsByName('contentId')[0].getAttribute('content') : '');
+
+          window.history.replaceState({}, document.title, window.rpf.removeParam("rctrk", window.location.pathname));
+        }
+
+        findElements(".widget_newsListTeaser .rctrk", "uc1_standard", "ab_cxense_uc1", 10);
+        findElements(".widget_newsListTeaser .cxtrk", "uc1_cxtrk", "ab_cxense_uc1", 10);
+      }
+    }
+};
+
+/*if (document.readyState !== 'loading'){
+  window.rpf.installTriggers();
+} else if (document.addEventListener) {
+  document.addEventListener('DOMContentLoaded', window.rpf.installTriggers);
+} else {
+  document.attachEvent('onreadystatechange', function() {
+    if (document.readyState !== 'loading')
+      window.rpf.installTriggers();
+  });
+}*/
+
+window.rp('trackPageView', null , function() {
+  var context = [];
+  if (document.getElementsByName('contentId').length > 0) {
+    context.push({
+                   schema: "iglu:com.ringier/cms/jsonschema/1-0-0",
+                   data: {
+                     content_id: document.getElementsByName('contentId')[0].getAttribute('content')
+                   }
+                 });
+  }
+  if (null !== window.rpf.abTestCookie && window.rpf.abTestCookie.length === 3) {
+    context.push({
+                   schema: "iglu:com.ringier/ab-testing/jsonschema/1-0-0",
+                   data: {
+                     experiment_id: window.rpf.abTestCookie[0],
+                     experiment_name: window.rpf.abTestCookie[1],
+                     variation: window.rpf.abTestCookie[2]
+                   }
+                 });
+  }
+  return context;
+}());
+</script><script src="TrefferMitPaging-Dateien/admTransfer.js" type="text/javascript"></script><iframe id="rufous-sandbox" scrolling="no" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" title="Twitter analytics iframe" frameborder="0"></iframe><script language="javascript" type="text/javascript" src="TrefferMitPaging-Dateien/chartbeat.js"></script></body></html>

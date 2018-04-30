@@ -1,7 +1,7 @@
-import {Entry} from "./Entry";
+import {Entry} from './Entry';
 
 import * as Fs from 'fs';
-import {SerialisableEntry} from "./SerialisableEntry";
+import {SerialisableEntry} from './SerialisableEntry';
 
 export class DumpToFile {
     private firstWritten: boolean = false;

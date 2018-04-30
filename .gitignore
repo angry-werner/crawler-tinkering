@@ -1,4 +1,6 @@
 .idea
+backup
+data
 dist
 node_modules
 selenium
