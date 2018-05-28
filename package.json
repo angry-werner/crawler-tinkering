@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jasmine-ts \"spec/**/*.spec.ts\"",
     "build": "rimraf dist && node_modules/typescript/bin/tsc && node_modules/.bin/tslint --project . && npm run test",
-    "crawl": "node dist/Crawler.js"
+    "crawl": "node dist/Crawler.js",
+    "transform": "node dist/Transformer.js"
   },
   "repository": {
     "type": "git",
