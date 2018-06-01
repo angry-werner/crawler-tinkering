@@ -38,14 +38,15 @@ export class KeywordMappings {
         KeywordMappings.initAnmachspruch();
         KeywordMappings.initZiel();
         KeywordMappings.initErleben();
+        KeywordMappings.initFreundeSind();
+        KeywordMappings.initMotto();
+        KeywordMappings.initGlaube();
+        KeywordMappings.initVerlieben();
         KeywordMappings.keywordMappings.set('Das macht mich glücklich', 'Das macht mich glücklich');
         KeywordMappings.keywordMappings.set('Mein grösster Traum', 'Mein grösster Traum');
-        KeywordMappings.keywordMappings.set('Ich glaube an', 'Ich glaube an');
         KeywordMappings.keywordMappings.set('Liebe ist', 'Liebe ist');
         KeywordMappings.keywordMappings.set('Speziell an mir ist', 'Speziell an mir ist');
         KeywordMappings.keywordMappings.set('Mein Tick', 'Mein Tick');
-        KeywordMappings.keywordMappings.set('Meine Freunde sind für mich', 'Meine Freunde sind für mich');
-        KeywordMappings.keywordMappings.set('Ich verliebe mich, wenn', 'Ich verliebe mich, wenn');
         KeywordMappings.keywordMappings.set('Speziell an mir sind', 'Speziell an mir sind');
         KeywordMappings.keywordMappings.set('Ich werde schwach bei', 'Ich werde schwach bei');
         KeywordMappings.keywordMappings.set('So verführe ich', 'So verführe ich');
@@ -53,8 +54,6 @@ export class KeywordMappings {
         KeywordMappings.keywordMappings.set('Da werde ich schwach', 'Da werde ich schwach');
         KeywordMappings.keywordMappings.set('Wenn ich zaubern könnte, würde ich', 'Wenn ich zaubern könnte, würde ich');
         KeywordMappings.keywordMappings.set('Das mag ich an mir', 'Das mag ich an mir');
-        KeywordMappings.keywordMappings.set('', '');
-        KeywordMappings.keywordMappings.set('', '');
         KeywordMappings.keywordMappings.set('', '');
         KeywordMappings.keywordMappings.set('', '');
         KeywordMappings.keywordMappings.set('', '');
@@ -153,14 +152,13 @@ export class KeywordMappings {
     private static initRegentag() {
         KeywordMappings.keywordMappings.set('An einem regnerischen Tag mache ich', 'An einem regnerischen Tag mache ich');
         KeywordMappings.keywordMappings.set('An einem regnerischen Tag', 'An einem regnerischen Tag mache ich');
-        KeywordMappings.keywordMappings.set('', 'An einem regnerischen Tag mache ich');
-        KeywordMappings.keywordMappings.set('', 'An einem regnerischen Tag mache ich');
-        KeywordMappings.keywordMappings.set('', 'An einem regnerischen Tag mache ich');
-        KeywordMappings.keywordMappings.set('', 'An einem regnerischen Tag mache ich');
-        KeywordMappings.keywordMappings.set('', 'An einem regnerischen Tag mache ich');
-        KeywordMappings.keywordMappings.set('', 'An einem regnerischen Tag mache ich');
-        KeywordMappings.keywordMappings.set('', 'An einem regnerischen Tag mache ich');
-
+        KeywordMappings.keywordMappings.set('An einem regnerischen Nachmittag mache ich', 'An einem regnerischen Nachmittag mache ich');
+        KeywordMappings.keywordMappings.set('Mein Schlechtwetter-Programm', 'An einem regnerischen Tag mache ich');
+        KeywordMappings.keywordMappings.set('An einem Regen-Tag mache ich', 'An einem regnerischen Tag mache ich');
+        KeywordMappings.keywordMappings.set('Einen regnerischen Tag', 'An einem regnerischen Tag mache ich');
+        KeywordMappings.keywordMappings.set('An einem Regentag', 'An einem regnerischen Tag mache ich');
+        KeywordMappings.keywordMappings.set('An einem Regentag mache ich', 'An einem regnerischen Tag mache ich');
+        KeywordMappings.keywordMappings.set('A eme rägnerische Tag mach i', 'An einem regnerischen Tag mache ich');
     }
 
     private static initWohnOrt() {
@@ -417,6 +415,39 @@ export class KeywordMappings {
         KeywordMappings.keywordMappings.set('Das will ich noch erleben', 'Das will ich noch erleben');
         KeywordMappings.keywordMappings.set('Das will ich unbedingt noch erleben', 'Das will ich noch erleben');
         KeywordMappings.keywordMappings.set('Das will ich mal erlebt haben', 'Das will ich noch erleben');
+    }
+
+    private static initFreundeSind() {
+        KeywordMappings.keywordMappings.set('Meine Freunde sind für mich', 'Meine Freunde sind für mich');
+        KeywordMappings.keywordMappings.set('Meine Freunde sind mir', 'Meine Freunde sind für mich');
+        KeywordMappings.keywordMappings.set('Mein Freunde sind für mich', 'Meine Freunde sind für mich');
+        KeywordMappings.keywordMappings.set('Meine Freund sind für mich', 'Meine Freunde sind für mich');
+        KeywordMappings.keywordMappings.set('Meine Freunde sind', 'Meine Freunde sind für mich');
+        KeywordMappings.keywordMappings.set('Meine Freunde', 'Meine Freunde sind für mich');
+        KeywordMappings.keywordMappings.set('Meine Freund sind', 'Meine Freunde sind für mich');
+    }
+
+    private static initMotto() {
+        KeywordMappings.keywordMappings.set('Mein Motto', 'Mein Motto');
+    }
+
+    private static initGlaube() {
+        KeywordMappings.keywordMappings.set('Ich glaube an', 'Ich glaube an');
+        KeywordMappings.keywordMappings.set('Ich glaube', 'Ich glaube an');
+    }
+
+    private static initVerlieben() {
+        KeywordMappings.keywordMappings.set('Ich verliebe mich, wenn', 'Ich verliebe mich, wenn');
+        KeywordMappings.keywordMappings.set('Ich verliebe mich', 'Ich verliebe mich, wenn');
+        KeywordMappings.keywordMappings.set('Ich verliebe mich, bei', 'Ich verliebe mich, wenn');
+        KeywordMappings.keywordMappings.set('Ich verliebe mi, wenn', 'Ich verliebe mich, wenn');
+        KeywordMappings.keywordMappings.set('', 'Ich verliebe mich, wenn');
+        KeywordMappings.keywordMappings.set('', 'Ich verliebe mich, wenn');
+        KeywordMappings.keywordMappings.set('', 'Ich verliebe mich, wenn');
+        KeywordMappings.keywordMappings.set('', 'Ich verliebe mich, wenn');
+        KeywordMappings.keywordMappings.set('', 'Ich verliebe mich, wenn');
+        KeywordMappings.keywordMappings.set('', 'Ich verliebe mich, wenn');
+
     }
 
     public getKeywordMappings(): Map<string, string> {
