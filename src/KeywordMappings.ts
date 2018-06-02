@@ -4,18 +4,18 @@ export class KeywordMappings {
     private static init() {
         KeywordMappings.keywordMappings.set('Titel', 'Titel');
         KeywordMappings.keywordMappings.set('Alter', 'Alter');
-        KeywordMappings.keywordMappings.set('Wohnort', 'Wohnort');
-        KeywordMappings.keywordMappings.set('Grösse', 'Grösse');
-        KeywordMappings.keywordMappings.set('Beruf', 'Beruf');
-        KeywordMappings.keywordMappings.set('Sternzeichen', 'Sternzeichen');
-        KeywordMappings.keywordMappings.set('Kontakt', 'Kontakt');
         KeywordMappings.keywordMappings.set('picture-href', 'picture-href');
+        KeywordMappings.initWohnort();
+        KeywordMappings.initBeruf();
+        KeywordMappings.initSternzeichen();
+        KeywordMappings.initGroesse();
+        KeywordMappings.initKontakt();
         KeywordMappings.initHobby();
         KeywordMappings.initBeruhigung();
         KeywordMappings.initHoeren();
         KeywordMappings.initVerzeihen();
         KeywordMappings.initRegentag();
-        KeywordMappings.initWohnOrt();
+        KeywordMappings.initWunschWohnort();
         KeywordMappings.initReiseZiele();
         KeywordMappings.initFollows();
         KeywordMappings.initNichtLebenOhne();
@@ -42,22 +42,42 @@ export class KeywordMappings {
         KeywordMappings.initMotto();
         KeywordMappings.initGlaube();
         KeywordMappings.initVerlieben();
-        KeywordMappings.keywordMappings.set('Das macht mich glücklich', 'Das macht mich glücklich');
-        KeywordMappings.keywordMappings.set('Mein grösster Traum', 'Mein grösster Traum');
-        KeywordMappings.keywordMappings.set('Liebe ist', 'Liebe ist');
-        KeywordMappings.keywordMappings.set('Speziell an mir ist', 'Speziell an mir ist');
-        KeywordMappings.keywordMappings.set('Mein Tick', 'Mein Tick');
-        KeywordMappings.keywordMappings.set('Speziell an mir sind', 'Speziell an mir sind');
-        KeywordMappings.keywordMappings.set('Ich werde schwach bei', 'Ich werde schwach bei');
-        KeywordMappings.keywordMappings.set('So verführe ich', 'So verführe ich');
-        KeywordMappings.keywordMappings.set('So verführt man mich', 'So verführt man mich');
-        KeywordMappings.keywordMappings.set('Da werde ich schwach', 'Da werde ich schwach');
-        KeywordMappings.keywordMappings.set('Wenn ich zaubern könnte, würde ich', 'Wenn ich zaubern könnte, würde ich');
+        KeywordMappings.initSchwach();
+        KeywordMappings.initSpeziell();
+        KeywordMappings.initVerfuehrtWerden();
+        KeywordMappings.initGluecklich();
+        KeywordMappings.initZukunft();
+        KeywordMappings.initLiebe();
+        KeywordMappings.initTick();
+        KeywordMappings.initVerfuehren();
         KeywordMappings.keywordMappings.set('Das mag ich an mir', 'Das mag ich an mir');
-        KeywordMappings.keywordMappings.set('', '');
-        KeywordMappings.keywordMappings.set('', '');
-        KeywordMappings.keywordMappings.set('', '');
+        KeywordMappings.keywordMappings.set('Das gefällt mir an der Schweiz', 'Das gefällt mir an der Schweiz');
+    }
 
+    private static initWohnort() {
+        KeywordMappings.keywordMappings.set('Wohnort', 'Wohnort');
+        KeywordMappings.keywordMappings.set('Wohnorte', 'Wohnort');
+    }
+
+    private static initBeruf() {
+        KeywordMappings.keywordMappings.set('Beruf', 'Beruf');
+        KeywordMappings.keywordMappings.set('Bruef', 'Beruf');
+    }
+
+    private static initSternzeichen() {
+        KeywordMappings.keywordMappings.set('Sternzeichen', 'Sternzeichen');
+        KeywordMappings.keywordMappings.set('Sternzeiche', 'Sternzeichen');
+    }
+
+    private static initGroesse() {
+        KeywordMappings.keywordMappings.set('Grösse', 'Grösse');
+        KeywordMappings.keywordMappings.set('Grössi', 'Grösse');
+    }
+
+    private static initKontakt() {
+        KeywordMappings.keywordMappings.set('Kontakt', 'Kontakt');
+        KeywordMappings.keywordMappings.set('kontakt', 'Kontakt');
+        KeywordMappings.keywordMappings.set('Mail', 'Kontakt');
     }
 
     private static initHobby() {
@@ -65,17 +85,10 @@ export class KeywordMappings {
         KeywordMappings.keywordMappings.set('Meine Hobbys', 'Mein Hobby');
         KeywordMappings.keywordMappings.set('Meine Hobbies', 'Mein Hobby');
         KeywordMappings.keywordMappings.set('Mein Hobbys', 'Mein Hobby');
-        KeywordMappings.keywordMappings.set('', 'Mein Hobby');
-        KeywordMappings.keywordMappings.set('', 'Mein Hobby');
-        KeywordMappings.keywordMappings.set('', 'Mein Hobby');
-        KeywordMappings.keywordMappings.set('', 'Mein Hobby');
-        KeywordMappings.keywordMappings.set('', 'Mein Hobby');
-        KeywordMappings.keywordMappings.set('', 'Mein Hobby');
-        KeywordMappings.keywordMappings.set('', 'Mein Hobby');
-        KeywordMappings.keywordMappings.set('', 'Mein Hobby');
-        KeywordMappings.keywordMappings.set('', 'Mein Hobby');
-        KeywordMappings.keywordMappings.set('', 'Mein Hobby');
-
+        KeywordMappings.keywordMappings.set('Mis Hobby', 'Mein Hobby');
+        KeywordMappings.keywordMappings.set('Mini Hobbys', 'Mein Hobby');
+        KeywordMappings.keywordMappings.set('Mein Hobby ist', 'Mein Hobby');
+        KeywordMappings.keywordMappings.set('Meine Hobbys sind', 'Mein Hobby');
     }
 
     private static initBeruhigung() {
@@ -136,6 +149,8 @@ export class KeywordMappings {
         KeywordMappings.keywordMappings.set('Im Moment los i am liebschte', 'Im Moment höre ich am liebsten');
         KeywordMappings.keywordMappings.set('Im Moment los ich am liebschte', 'Im Moment höre ich am liebsten');
         KeywordMappings.keywordMappings.set('Ich höre gerade', 'Im Moment höre ich am liebsten');
+        KeywordMappings.keywordMappings.set('Am liebsten höre ich', 'Im Moment höre ich am liebsten');
+        KeywordMappings.keywordMappings.set('Mein Lieblingssound', 'Im Moment höre ich am liebsten');
     }
 
     private static initVerzeihen() {
@@ -161,7 +176,7 @@ export class KeywordMappings {
         KeywordMappings.keywordMappings.set('A eme rägnerische Tag mach i', 'An einem regnerischen Tag mache ich');
     }
 
-    private static initWohnOrt() {
+    private static initWunschWohnort() {
         KeywordMappings.keywordMappings.set('In diesem Land möchte ich am liebsten leben', 'In diesem Land möchte ich am liebsten leben');
         KeywordMappings.keywordMappings.set('Dort würde ich am liebsten leben', 'In diesem Land möchte ich am liebsten leben');
         KeywordMappings.keywordMappings.set('In diesem Land lebe ich am liebsten', 'In diesem Land möchte ich am liebsten leben');
@@ -188,6 +203,7 @@ export class KeywordMappings {
         KeywordMappings.keywordMappings.set('Dort würde ich gerne leben', 'In diesem Land möchte ich am liebsten leben');
         KeywordMappings.keywordMappings.set('Dort würde ich am liebsten Leben', 'In diesem Land möchte ich am liebsten leben');
         KeywordMappings.keywordMappings.set('Da möchte ich leben', 'In diesem Land möchte ich am liebsten leben');
+        KeywordMappings.keywordMappings.set('Da würde ich am liebsten leben', 'In diesem Land möchte ich am liebsten leben');
     }
 
     private static initReiseZiele() {
@@ -204,7 +220,7 @@ export class KeywordMappings {
         KeywordMappings.keywordMappings.set('Mis Lieblingsreiseziel', 'Mein Lieblingsreiseziel');
         KeywordMappings.keywordMappings.set('Meine Lieblingsreiseziele sind', 'Mein Lieblingsreiseziel');
         KeywordMappings.keywordMappings.set('Mein Lieblinsreiseziel', 'Mein Lieblingsreiseziel');
-
+        KeywordMappings.keywordMappings.set('Mein Lieblinsreiseziel', 'Mein Lieblingsreiseziel');
     }
 
     private static initFollows() {
@@ -261,10 +277,6 @@ export class KeywordMappings {
         KeywordMappings.keywordMappings.set('Das macht mit wütend', 'Das macht mich wütend');
         KeywordMappings.keywordMappings.set('Das macht uns wütend', 'Das macht mich wütend');
         KeywordMappings.keywordMappings.set('Das macht mich hässig', 'Das macht mich wütend');
-        KeywordMappings.keywordMappings.set('', 'Das macht mich wütend');
-        KeywordMappings.keywordMappings.set('', 'Das macht mich wütend');
-        KeywordMappings.keywordMappings.set('', 'Das macht mich wütend');
-        KeywordMappings.keywordMappings.set('', 'Das macht mich wütend');
     }
 
     private static initZehnJahre() {
@@ -289,6 +301,7 @@ export class KeywordMappings {
         KeywordMappings.keywordMappings.set('Wenn ich zaubern könnte', 'Wenn ich zaubern könnte, wäre ich');
         KeywordMappings.keywordMappings.set('Wenn ich zaubern könnte würde ich', 'Wenn ich zaubern könnte, wäre ich');
         KeywordMappings.keywordMappings.set('Wenn ich eine Superkraft hätte', 'Wenn ich zaubern könnte, wäre ich');
+        KeywordMappings.keywordMappings.set('Wenn ich zaubern könnte, würde ich', 'Wenn ich zaubern könnte, wäre ich');
     }
 
     private static initAbschaffen() {
@@ -299,6 +312,7 @@ export class KeywordMappings {
         KeywordMappings.keywordMappings.set('Das würde ich abschaffen', 'Das möchte ich abschaffen');
         KeywordMappings.keywordMappings.set('Das möcht ich abschaffe', 'Das möchte ich abschaffen');
         KeywordMappings.keywordMappings.set('Das wür i abschaffe', 'Das möchte ich abschaffen');
+        KeywordMappings.keywordMappings.set('Das würde ich verbieten', 'Das möchte ich abschaffen');
     }
 
     private static initBereuen() {
@@ -344,14 +358,15 @@ export class KeywordMappings {
         KeywordMappings.keywordMappings.set('Meinen Traumberuf', 'Mein Traumberuf');
         KeywordMappings.keywordMappings.set('Mein Traumjob', 'Mein Traumberuf');
         KeywordMappings.keywordMappings.set('Unser Traumberuf', 'Mein Traumberuf');
-        KeywordMappings.keywordMappings.set('Bruef', 'Mein Traumberuf');
         KeywordMappings.keywordMappings.set('Mi Traumbruef', 'Mein Traumberuf');
+        KeywordMappings.keywordMappings.set('Traumberuf', 'Mein Traumberuf');
     }
 
     private static initPersonenEinfluss() {
         KeywordMappings.keywordMappings.set('Diese Person hat mein Leben beeinflusst', 'Diese Person hat mein Leben beeinflusst');
         KeywordMappings.keywordMappings.set('Diese Personen haben mein Leben beeinflusst', 'Diese Person hat mein Leben beeinflusst');
         KeywordMappings.keywordMappings.set('Diese Person hat mein Leben verändert', 'Diese Person hat mein Leben beeinflusst');
+        KeywordMappings.keywordMappings.set('Ein Star, der mich beeindruckt', 'Diese Person hat mein Leben beeinflusst');
     }
 
     private static initUnnoetig() {
@@ -434,6 +449,8 @@ export class KeywordMappings {
     private static initGlaube() {
         KeywordMappings.keywordMappings.set('Ich glaube an', 'Ich glaube an');
         KeywordMappings.keywordMappings.set('Ich glaube', 'Ich glaube an');
+        KeywordMappings.keywordMappings.set('Ich glaub an', 'Ich glaube an');
+        KeywordMappings.keywordMappings.set('Ich glaube daran', 'Ich glaube an');
     }
 
     private static initVerlieben() {
@@ -441,13 +458,71 @@ export class KeywordMappings {
         KeywordMappings.keywordMappings.set('Ich verliebe mich', 'Ich verliebe mich, wenn');
         KeywordMappings.keywordMappings.set('Ich verliebe mich, bei', 'Ich verliebe mich, wenn');
         KeywordMappings.keywordMappings.set('Ich verliebe mi, wenn', 'Ich verliebe mich, wenn');
-        KeywordMappings.keywordMappings.set('', 'Ich verliebe mich, wenn');
-        KeywordMappings.keywordMappings.set('', 'Ich verliebe mich, wenn');
-        KeywordMappings.keywordMappings.set('', 'Ich verliebe mich, wenn');
-        KeywordMappings.keywordMappings.set('', 'Ich verliebe mich, wenn');
-        KeywordMappings.keywordMappings.set('', 'Ich verliebe mich, wenn');
-        KeywordMappings.keywordMappings.set('', 'Ich verliebe mich, wenn');
+    }
 
+    private static initSchwach() {
+        KeywordMappings.keywordMappings.set('Ich werde schwach bei', 'Ich werde schwach bei');
+        KeywordMappings.keywordMappings.set('Ich werde schwach', 'Ich werde schwach bei');
+        KeywordMappings.keywordMappings.set('Ich werde schwach, wenn', 'Ich werde schwach bei');
+        KeywordMappings.keywordMappings.set('Ich wird schwach bi', 'Ich werde schwach bei');
+        KeywordMappings.keywordMappings.set('Da werde ich schwach', 'Ich werde schwach bei');
+    }
+
+    private static initSpeziell() {
+        KeywordMappings.keywordMappings.set('Speziell an mir sind', 'Speziell an mir sind');
+        KeywordMappings.keywordMappings.set('Speziell an mir ist', 'Speziell an mir sind');
+        KeywordMappings.keywordMappings.set('Das ist speziell an mir', 'Speziell an mir sind');
+        KeywordMappings.keywordMappings.set('Speziall an mir ist', 'Speziell an mir sind');
+        KeywordMappings.keywordMappings.set('Speziell an mir finde ich', 'Speziell an mir sind');
+        KeywordMappings.keywordMappings.set('Was ist speziell an mir', 'Speziell an mir sind');
+        KeywordMappings.keywordMappings.set('Speziell a mir isch', 'Speziell an mir sind');
+        KeywordMappings.keywordMappings.set('Speziell a mir sind', 'Speziell an mir sind');
+    }
+
+    private static initVerfuehrtWerden() {
+        KeywordMappings.keywordMappings.set('So verführt man mich', 'So verführt man mich');
+        KeywordMappings.keywordMappings.set('So verführt Mann mich', 'So verführt man mich');
+        KeywordMappings.keywordMappings.set('So verführt Frau mich', 'So verführt man mich');
+        KeywordMappings.keywordMappings.set('So verführt er mich', 'So verführt man mich');
+        KeywordMappings.keywordMappings.set('So verführt frau mich', 'So verführt man mich');
+        KeywordMappings.keywordMappings.set('So verführt man uns', 'So verführt man mich');
+        KeywordMappings.keywordMappings.set('So verfüert me mi', 'So verführt man mich');
+    }
+
+    private static initGluecklich() {
+        KeywordMappings.keywordMappings.set('Das macht mich glücklich', 'Das macht mich glücklich');
+        KeywordMappings.keywordMappings.set('Glücklich macht mich', 'Das macht mich glücklich');
+        KeywordMappings.keywordMappings.set('Ich mag', 'Das macht mich glücklich');
+        KeywordMappings.keywordMappings.set('Ich geniesse', 'Das macht mich glücklich');
+        KeywordMappings.keywordMappings.set('Das macht mi glücklich', 'Das macht mich glücklich');
+        KeywordMappings.keywordMappings.set('Das macht mich glücklech', 'Das macht mich glücklich');
+    }
+
+    private static initZukunft() {
+        KeywordMappings.keywordMappings.set('Mein grösster Traum', 'Mein grösster Traum');
+        KeywordMappings.keywordMappings.set('Für die Zukunft wünsche ich mir', 'Mein grösster Traum');
+        KeywordMappings.keywordMappings.set('Mein grösser Traum', 'Mein grösster Traum');
+        KeywordMappings.keywordMappings.set('Mein Traum', 'Mein grösster Traum');
+    }
+
+    private static initLiebe() {
+        KeywordMappings.keywordMappings.set('Liebe ist', 'Liebe ist');
+        KeywordMappings.keywordMappings.set('Liebe bedeutet für mich', 'Liebe ist');
+        KeywordMappings.keywordMappings.set('Liebe bedeutet', 'Liebe ist');
+        KeywordMappings.keywordMappings.set('Liebe', 'Liebe ist');
+        KeywordMappings.keywordMappings.set('Liäbi isch', 'Liebe ist');
+    }
+
+    private static initTick() {
+        KeywordMappings.keywordMappings.set('Mein Tick', 'Mein Tick');
+        KeywordMappings.keywordMappings.set('Meine Macke', 'Mein Tick');
+        KeywordMappings.keywordMappings.set('Unser Tick', 'Mein Tick');
+        KeywordMappings.keywordMappings.set('Min Tigg', 'Mein Tick');
+    }
+
+    private static initVerfuehren() {
+        KeywordMappings.keywordMappings.set('So verführe ich', 'So verführe ich');
+        KeywordMappings.keywordMappings.set('So verführen wir', 'So verführe ich');
     }
 
     public getKeywordMappings(): Map<string, string> {
