@@ -5,7 +5,7 @@ export class Transformer {
 
     public static main() {
         const originalData: Entry[] = this.loadEntries();
-        const keys = this.getKeys(originalData);
+        const keys: Set<string> = this.getKeys(originalData);
         for (const key of keys.values()) {
             console.log(key);
         }
@@ -16,7 +16,7 @@ export class Transformer {
         return new ReadFromFile('/home/kow/git/crawler-tinkering/data/original-data.json').read();
     }
 
-    private static getKeys(originalData: Entry[]) {
+    private static getKeys(originalData: Entry[]): Set<string> {
         const keys: Set<string> = new Set<string>();
         for (const entry of originalData) {
             for (const key of entry.getInfos().keys()) {
