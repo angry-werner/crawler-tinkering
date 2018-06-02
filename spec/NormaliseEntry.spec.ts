@@ -1,10 +1,10 @@
 import {Entry} from "../src/Entry";
+import {Fragen} from "../src/Fragen";
+import {Info} from "../src/Info";
 import {KeywordMappings} from "../src/KeywordMappings";
 import {NormaliseEntry} from "../src/NormaliseEntry";
-import {Info} from "../src/Info";
-import {Fragen} from "../src/Fragen";
 
-fdescribe('Normalise entries', () => {
+describe('Normalise entries', () => {
     it('No info', () => {
         // Arrange
         const testee: NormaliseEntry = new NormaliseEntry(new KeywordMappings());
@@ -47,5 +47,10 @@ fdescribe('Normalise entries', () => {
         const normalisedEntry = testee.normalise(entry);
         // Assert
         expect(normalisedEntry.getInfos().size).toBe(0);
+    });
+    it('', () => {
+        for (const frage in Fragen) {
+            console.log(Fragen[frage]);
+        }
     });
 });

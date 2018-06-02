@@ -10,7 +10,8 @@
             "esSpecCompliant": true
         }],
         "interface-name": [true, "never-prefix"],
-        "no-console": [false]
+        "no-console": [false],
+        "forin": [false]
     },
     "rulesDirectory": []
 }
