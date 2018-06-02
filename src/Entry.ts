@@ -27,4 +27,16 @@ export class Entry {
             console.log(key + ': ' + value);
         });
     }
+
+    public getUuid(): string {
+        return this.uuid;
+    }
+
+    public getDate(): string {
+        return this.date;
+    }
+
+    public getHref(): string {
+        return this.href;
+    }
 }
