@@ -1,33 +1,32 @@
+import {CSVLine} from "./CSVLine";
+import {DumpLinesToFile} from "./DumpLinesToFile";
 import {Entry} from './Entry';
 import {KeywordMappings} from "./KeywordMappings";
+import {NormaliseEntry} from "./NormaliseEntry";
 import {ReadFromFile} from './ReadFromFile';
 
 export class Transformer {
 
     public static main() {
         const originalData: Entry[] = this.loadEntries();
-        const keys: Set<string> = this.getKeys(originalData);
-        const keywordMappings: KeywordMappings = new KeywordMappings();
-        for (const key of keys.values()) {
-            if (!keywordMappings.getKeywordMappings().has(key)) {
-                console.log(key);
-            }
+        const normalisedData: Entry[] = [];
+        for (const entry of originalData) {
+            normalisedData.push(Transformer.normaliser.normalise(entry));
         }
-        console.log('Anzahl keys: ' + keys.size);
+        const lines: string[] = [];
+        lines.push(Transformer.csv.writeHeader());
+        for (const entry of normalisedData) {
+            lines.push(Transformer.csv.write(entry));
+        }
+        Transformer.dumper.write(lines);
     }
+
+    private static normaliser: NormaliseEntry = new NormaliseEntry(new KeywordMappings());
+    private static csv: CSVLine = new CSVLine();
+    private static dumper: DumpLinesToFile = new DumpLinesToFile();
 
     private static loadEntries(): Entry[] {
         return new ReadFromFile('/home/kow/git/crawler-tinkering/src/data.json').read();
-    }
-
-    private static getKeys(originalData: Entry[]): Set<string> {
-        const keys: Set<string> = new Set<string>();
-        for (const entry of originalData) {
-            for (const key of entry.getInfos().keys()) {
-                keys.add(key);
-            }
-        }
-        return keys;
     }
 }
 

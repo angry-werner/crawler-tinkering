@@ -9,7 +9,7 @@ export class DumpToFile {
     public constructor(private readonly fileName: string = 'results.json') {}
 
     public write(entries: Entry[]) {
-        let fd;
+        let fd: number | undefined;
         try {
             fd = Fs.openSync(this.fileName, 'a');
             for (const entry of entries) {

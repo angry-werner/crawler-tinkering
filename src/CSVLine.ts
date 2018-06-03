@@ -1,7 +1,7 @@
 import {Entry} from "./Entry";
 import {Fragen} from "./Fragen";
 
-export class CSVWriteLine {
+export class CSVLine {
 
     public write(entry: Entry): string {
         let line: string = '|';
@@ -10,6 +10,14 @@ export class CSVWriteLine {
         line = this.writeItem(line, entry.getHref());
         for (const frage in Fragen) {
             line = this.writeItem(line, entry.getInfos().get(Fragen[frage]));
+        }
+        return line + '\n\r';
+    }
+
+    public writeHeader(): string {
+        let line: string = '|UUID|Datum|URL|';
+        for (const frage in Fragen) {
+            line = this.writeItem(line, Fragen[frage]);
         }
         return line + '\n\r';
     }
