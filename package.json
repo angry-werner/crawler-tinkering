@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "jasmine-ts \"spec/**/*.spec.ts\"",
-    "build": "rimraf dist && node_modules/typescript/bin/tsc && node_modules/.bin/tslint --project . && npm run test",
+    "clean": "rimraf dist",
+    "compile": "npm run clean && node_modules/typescript/bin/tsc",
+    "build": "npm run compile && node_modules/.bin/tslint --project . && npm run test",
     "crawl": "node dist/Crawler.js",
-    "transform": "node dist/Transformer.js"
+    "transform": "node dist/Transformer.js",
+    "keys": "node dist/KeywordMappings.js"
   },
   "repository": {
     "type": "git",

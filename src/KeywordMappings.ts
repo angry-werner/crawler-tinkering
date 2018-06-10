@@ -11,6 +11,18 @@ export class KeywordMappings {
         return this.keywordMappings;
     }
 
+    public static main() {
+        let mappings: Map<String, Fragen> = new KeywordMappings().getKeywordMappings();
+        for (const frage in Fragen) {
+            console.log(frage);
+            for (const mapping of mappings.entries()) {
+                if (Fragen[frage] === mapping[1]) {
+                    console.log('    ' + mapping[0]);
+                }
+            }
+        }
+    }
+
     private init() {
         this.keywordMappings.set('Titel', Fragen.TITEL);
         this.keywordMappings.set('Alter', Fragen.ALTER);
@@ -536,3 +548,5 @@ export class KeywordMappings {
         this.keywordMappings.set('So verführen wir', Fragen.VERFUEHRE_ICH);
     }
 }
+
+KeywordMappings.main();

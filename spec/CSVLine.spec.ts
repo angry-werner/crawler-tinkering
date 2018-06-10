@@ -13,7 +13,7 @@ describe('Write lines of CSV', () => {
         entry.addInfo(new Info(Fragen.MUSIK, 'Led Zeppelin'));
         expect(new CSVLine().write(entry)).toBe('|foo|bar|baz|||||||||||||Led Zeppelin||||||||||||||||||||||||||||||||||||||\n\r');
     });
-    fit('Write header', () => {
+    it('Write header', () => {
         console.log(new CSVLine().writeHeader());
     })
 });
