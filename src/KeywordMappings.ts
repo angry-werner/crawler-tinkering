@@ -1,18 +1,8 @@
 import {Fragen} from "./Fragen";
 
 export class KeywordMappings {
-    private keywordMappings: Map<string, Fragen> = new Map<string, Fragen>();
-
-    public constructor() {
-        this.init();
-    }
-
-    public getKeywordMappings(): Map<string, Fragen> {
-        return this.keywordMappings;
-    }
-
     public static main() {
-        let mappings: Map<String, Fragen> = new KeywordMappings().getKeywordMappings();
+        const mappings: Map<string, Fragen> = new KeywordMappings().getKeywordMappings();
         for (const frage in Fragen) {
             console.log(frage);
             for (const mapping of mappings.entries()) {
@@ -21,6 +11,16 @@ export class KeywordMappings {
                 }
             }
         }
+    }
+
+    private keywordMappings: Map<string, Fragen> = new Map<string, Fragen>();
+
+    public constructor() {
+        this.init();
+    }
+
+    public getKeywordMappings(): Map<string, Fragen> {
+        return this.keywordMappings;
     }
 
     private init() {
